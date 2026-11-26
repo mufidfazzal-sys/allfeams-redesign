@@ -557,11 +557,18 @@
       const descEl = document.getElementById('landscape-explainer-desc');
       if (!item || !videoEl) return;
 
-      videoEl.pause();
-      videoEl.src = item.src;
-      videoEl.poster = item.poster;
-      videoEl.load();
-      videoEl.play().catch(() => {});
+      if (window.CMSEngine && typeof CMSEngine.applyVideoSource === 'function') {
+        CMSEngine.applyVideoSource(videoEl, item.src, item.poster);
+        if (!CMSEngine.parseEmbedVideoUrl(item.src)) {
+          videoEl.play().catch(() => {});
+        }
+      } else {
+        videoEl.pause();
+        videoEl.src = item.src;
+        videoEl.poster = item.poster;
+        videoEl.load();
+        videoEl.play().catch(() => {});
+      }
 
       if (tagEl) tagEl.textContent = item.tag;
       if (titleEl) titleEl.textContent = item.title;

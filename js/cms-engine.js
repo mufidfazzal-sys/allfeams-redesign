@@ -102,6 +102,91 @@ const CMSEngine = (function() {
     }
   }
 
+  function parseEmbedVideoUrl(url) {
+    if (!url || typeof url !== 'string') return null;
+    const trimmed = url.trim();
+    if (!trimmed) return null;
+
+    // YouTube: watch?v=, youtu.be/, /shorts/, /embed/, /live/
+    const ytMatch = trimmed.match(
+      /(?:youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/i
+    );
+    if (ytMatch && ytMatch[1]) {
+      return `https://www.youtube.com/embed/${ytMatch[1]}?rel=0&playsinline=1`;
+    }
+
+    // Vimeo: vimeo.com/<id> or player.vimeo.com/video/<id>
+    const vimeoMatch = trimmed.match(/(?:player\.)?vimeo\.com\/(?:video\/)?(\d+)/i);
+    if (vimeoMatch && vimeoMatch[1]) {
+      return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+    }
+
+    return null;
+  }
+
+  function applyVideoSource(videoEl, url, posterUrl) {
+    if (!videoEl || !url) return;
+    const parent = videoEl.parentElement;
+    if (!parent) return;
+
+    const embedUrl = parseEmbedVideoUrl(url);
+    let iframeEl = parent.querySelector('iframe.cms-embed-iframe');
+    const muteBtn = parent.querySelector('button[onclick*="toggleVideoMute"]');
+
+    if (embedUrl) {
+      // Switch to embedded iframe (YouTube / Vimeo)
+      if (!videoEl.getAttribute('data-orig-src')) {
+        videoEl.setAttribute('data-orig-src', videoEl.getAttribute('src') || '');
+      }
+      try {
+        videoEl.pause();
+        videoEl.muted = true;
+        videoEl.removeAttribute('src');
+        videoEl.load();
+      } catch (e) {}
+      videoEl.classList.add('hidden');
+      if (muteBtn) muteBtn.classList.add('hidden');
+
+      if (!iframeEl) {
+        iframeEl = document.createElement('iframe');
+        const isLandscape = videoEl.classList.contains('aspect-video');
+        iframeEl.className = isLandscape
+          ? 'cms-embed-iframe w-full aspect-video border-0'
+          : 'cms-embed-iframe w-full h-full border-0';
+        iframeEl.setAttribute(
+          'allow',
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+        );
+        iframeEl.setAttribute('allowfullscreen', '');
+        iframeEl.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        videoEl.insertAdjacentElement('afterend', iframeEl);
+      }
+
+      if (iframeEl.getAttribute('src') !== embedUrl) {
+        iframeEl.setAttribute('src', embedUrl);
+      }
+    } else {
+      // Native MP4 / direct video URL
+      if (iframeEl) {
+        iframeEl.setAttribute('src', '');
+        iframeEl.remove();
+      }
+      videoEl.classList.remove('hidden');
+      if (muteBtn) muteBtn.classList.remove('hidden');
+
+      if (posterUrl) {
+        videoEl.setAttribute('poster', posterUrl);
+      }
+      const current = videoEl.getAttribute('src');
+      if (current !== url) {
+        videoEl.setAttribute('src', url);
+        if (typeof videoEl.load === 'function') {
+          videoEl.load();
+        }
+      }
+    }
+  }
+
   function applyDomBindings(cms) {
     // 1. Plain text bindings
     document.querySelectorAll('[data-cms]').forEach(el => {
@@ -119,15 +204,18 @@ const CMSEngine = (function() {
       }
     });
 
-    // 3. Src bindings (images & videos)
+    // 3. Src bindings (images & videos - supports MP4 and YouTube/Vimeo embeds)
     document.querySelectorAll('[data-cms-src]').forEach(el => {
       const val = resolvePath(cms, el.getAttribute('data-cms-src'));
       if (val) {
-        const current = el.getAttribute('src');
-        if (current !== val) {
-          el.setAttribute('src', val);
-          if (el.tagName === 'VIDEO' && typeof el.load === 'function') {
-            el.load();
+        if (el.tagName === 'VIDEO') {
+          const posterPath = el.getAttribute('data-cms-poster');
+          const posterVal = posterPath ? resolvePath(cms, posterPath) : undefined;
+          applyVideoSource(el, val, posterVal);
+        } else {
+          const current = el.getAttribute('src');
+          if (current !== val) {
+            el.setAttribute('src', val);
           }
         }
       }
@@ -136,7 +224,7 @@ const CMSEngine = (function() {
     // 4. Poster bindings for videos
     document.querySelectorAll('[data-cms-poster]').forEach(el => {
       const val = resolvePath(cms, el.getAttribute('data-cms-poster'));
-      if (val) {
+      if (val && !el.classList.contains('hidden')) {
         el.setAttribute('poster', val);
       }
     });
@@ -308,6 +396,8 @@ const CMSEngine = (function() {
     saveContent,
     resetContent,
     apply,
+    applyVideoSource,
+    parseEmbedVideoUrl,
     fetchPublishedIfNoLocalOverride
   };
 })();

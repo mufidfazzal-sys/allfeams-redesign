@@ -783,7 +783,7 @@ const AdminApp = (function() {
           { path: 'stories.s1Badge', label: 'Label Badge' },
           { path: 'stories.s1Title', label: 'Judul Story 1' },
           { path: 'stories.s1Desc', label: 'Deskripsi Story 1', type: 'textarea' },
-          { path: 'stories.s1Video', label: 'Path / URL Video MP4' },
+          { path: 'stories.s1Video', label: 'Path / URL Video (MP4, YouTube, Shorts, atau Vimeo)' },
           { path: 'stories.s1Poster', label: 'Path / URL Poster Gambar' }
         ]
       },
@@ -793,7 +793,7 @@ const AdminApp = (function() {
           { path: 'stories.s2Badge', label: 'Label Badge' },
           { path: 'stories.s2Title', label: 'Judul Story 2' },
           { path: 'stories.s2Desc', label: 'Deskripsi Story 2', type: 'textarea' },
-          { path: 'stories.s2Video', label: 'Path / URL Video MP4' },
+          { path: 'stories.s2Video', label: 'Path / URL Video (MP4, YouTube, Shorts, atau Vimeo)' },
           { path: 'stories.s2Poster', label: 'Path / URL Poster Gambar' }
         ]
       },
@@ -803,7 +803,7 @@ const AdminApp = (function() {
           { path: 'stories.s3Badge', label: 'Label Badge' },
           { path: 'stories.s3Title', label: 'Judul Story 3' },
           { path: 'stories.s3Desc', label: 'Deskripsi Story 3', type: 'textarea' },
-          { path: 'stories.s3Video', label: 'Path / URL Video MP4' },
+          { path: 'stories.s3Video', label: 'Path / URL Video (MP4, YouTube, Shorts, atau Vimeo)' },
           { path: 'stories.s3Poster', label: 'Path / URL Poster Gambar' }
         ]
       },
@@ -813,17 +813,17 @@ const AdminApp = (function() {
           { path: 'stories.expFloraTag', label: 'Flora+ Tag' },
           { path: 'stories.expFloraTitle', label: 'Flora+ Landscape Judul' },
           { path: 'stories.expFloraDesc', label: 'Flora+ Landscape Deskripsi', type: 'textarea' },
-          { path: 'stories.expFloraVideo', label: 'Flora+ Landscape Video MP4' },
+          { path: 'stories.expFloraVideo', label: 'Flora+ Video (MP4 / Link YouTube)' },
           { path: 'stories.expFloraPoster', label: 'Flora+ Landscape Poster' },
           { path: 'stories.expHarmonyTag', label: 'Harmony+ Tag' },
           { path: 'stories.expHarmonyTitle', label: 'Harmony+ Landscape Judul' },
           { path: 'stories.expHarmonyDesc', label: 'Harmony+ Landscape Deskripsi', type: 'textarea' },
-          { path: 'stories.expHarmonyVideo', label: 'Harmony+ Landscape Video MP4' },
+          { path: 'stories.expHarmonyVideo', label: 'Harmony+ Video (MP4 / Link YouTube)' },
           { path: 'stories.expHarmonyPoster', label: 'Harmony+ Landscape Poster' },
           { path: 'stories.expFlatTag', label: 'FlatFeams Tag' },
           { path: 'stories.expFlatTitle', label: 'FlatFeams Landscape Judul' },
           { path: 'stories.expFlatDesc', label: 'FlatFeams Landscape Deskripsi', type: 'textarea' },
-          { path: 'stories.expFlatVideo', label: 'FlatFeams Landscape Video MP4' },
+          { path: 'stories.expFlatVideo', label: 'FlatFeams Video (MP4 / Link YouTube)' },
           { path: 'stories.expFlatPoster', label: 'FlatFeams Landscape Poster' }
         ]
       }
