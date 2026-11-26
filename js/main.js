@@ -59,7 +59,11 @@ window.safeCreateIcons = function() {
 
 // Global helper wrappers for backward compatibility with inline onclick handlers
 window.quickAddProduct = function(id, name, price, image) {
-  CartModule.addItem(id, name, price, image);
+  const prod = (typeof ALLFEAMS_PRODUCTS !== 'undefined' && ALLFEAMS_PRODUCTS[id]) ? ALLFEAMS_PRODUCTS[id] : null;
+  const finalName = prod ? prod.fullName : name;
+  const finalPrice = prod ? prod.price : price;
+  const finalImage = prod ? prod.image : image;
+  CartModule.addItem(id, finalName, finalPrice, finalImage);
 };
 
 window.switchFormula = function(key) {
@@ -111,6 +115,9 @@ window.openProductZoom = function(src, alt) {
 
 // DOM Content Loaded Bootstrap
 document.addEventListener('DOMContentLoaded', () => {
+  if (window.CMSEngine) {
+    CMSEngine.apply();
+  }
   safeCreateIcons();
   CurrencyEngine.init();
   CartModule.init();
