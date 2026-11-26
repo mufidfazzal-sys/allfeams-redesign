@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "/admin/",
+      "permanent": true
+    },
+    {
+      "source": "/admin.html",
+      "destination": "/admin/",
+      "permanent": true
+    }
+  ]
+}

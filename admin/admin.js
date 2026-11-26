@@ -103,6 +103,27 @@ const AdminApp = (function() {
   let orders = [];
   let promos = [];
   let currentTab = 'overview';
+  let memoryAuthed = false;
+
+  function isSessionAuthed() {
+    if (memoryAuthed) return true;
+    try {
+      return sessionStorage.getItem('allfeams_admin_logged') === 'true';
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function setSessionAuthed(val) {
+    memoryAuthed = !!val;
+    try {
+      if (val) {
+        sessionStorage.setItem('allfeams_admin_logged', 'true');
+      } else {
+        sessionStorage.removeItem('allfeams_admin_logged');
+      }
+    } catch (e) {}
+  }
 
   function init() {
     loadData();
@@ -142,13 +163,14 @@ const AdminApp = (function() {
 
   // Authentication check
   function checkAuth() {
-    const isAuthed = sessionStorage.getItem('allfeams_admin_logged');
+    const isAuthed = isSessionAuthed();
     const lockScreen = document.getElementById('admin-lock-screen');
     const mainDashboard = document.getElementById('admin-main-dashboard');
 
-    if (isAuthed === 'true') {
+    if (isAuthed) {
       if (lockScreen) lockScreen.classList.add('hidden');
       if (mainDashboard) mainDashboard.classList.remove('hidden');
+      if (window.safeCreateIcons) window.safeCreateIcons();
     } else {
       if (lockScreen) lockScreen.classList.remove('hidden');
       if (mainDashboard) mainDashboard.classList.add('hidden');
@@ -156,8 +178,9 @@ const AdminApp = (function() {
   }
 
   function login(pin) {
-    if (pin === '8888' || pin === 'admin' || !pin) {
-      sessionStorage.setItem('allfeams_admin_logged', 'true');
+    const cleanPin = (pin || '').trim().toLowerCase();
+    if (cleanPin === '8888' || cleanPin === 'admin' || !cleanPin) {
+      setSessionAuthed(true);
       checkAuth();
       return true;
     } else {
@@ -167,7 +190,7 @@ const AdminApp = (function() {
   }
 
   function logout() {
-    sessionStorage.removeItem('allfeams_admin_logged');
+    setSessionAuthed(false);
     checkAuth();
   }
 

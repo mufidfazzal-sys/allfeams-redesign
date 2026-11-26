@@ -233,14 +233,14 @@
       <!-- STORY 1: FLORA+ -->
       <div class="bg-[#1C1514] rounded-3xl overflow-hidden shadow-2xl border border-rosefemme-900/60 relative group flex flex-col justify-between">
         <div class="relative aspect-[9/16] max-h-[520px] w-full overflow-hidden bg-black flex items-center justify-center">
-          <video src="assets/Advanced/video/advance potrait.mp4" class="w-full h-full object-cover" playsinline loop muted autoplay id="vid-flora"></video>
+          <video src="assets/Advanced/video/advance potrait.mp4" poster="assets/Advanced.jpg" class="w-full h-full object-cover" controls playsinline loop muted autoplay preload="metadata" id="vid-flora"></video>
           
-          <div class="absolute top-4 left-4 bg-noir-900/80 backdrop-blur-md px-3 py-1 rounded-full text-rosefemme-200 text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5 border border-rosefemme-800">
+          <div class="absolute top-4 left-4 bg-noir-900/80 backdrop-blur-md px-3 py-1 rounded-full text-rosefemme-200 text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5 border border-rosefemme-800 pointer-events-none">
             <span class="w-2 h-2 rounded-full bg-rosefemme-500 animate-pulse"></span>
             <span>Flora+ Story</span>
           </div>
 
-          <button onclick="toggleVideoMute('vid-flora', this)" class="absolute top-4 right-4 bg-noir-900/80 hover:bg-rosefemme-600 text-white p-2.5 rounded-full backdrop-blur-md transition">
+          <button onclick="toggleVideoMute('vid-flora', this)" class="absolute top-4 right-4 bg-noir-900/80 hover:bg-rosefemme-600 text-white p-2.5 rounded-full backdrop-blur-md transition" title="Toggle Sound">
             <i data-lucide="volume-x" class="w-4 h-4"></i>
           </button>
         </div>
@@ -268,14 +268,14 @@
       <!-- STORY 2: HARMONY+ -->
       <div class="bg-[#1C1514] rounded-3xl overflow-hidden shadow-2xl border border-rosefemme-900/60 relative group flex flex-col justify-between">
         <div class="relative aspect-[9/16] max-h-[520px] w-full overflow-hidden bg-black flex items-center justify-center">
-          <video src="assets/harmony+/video/Harmony potratit.mp4" class="w-full h-full object-cover" playsinline loop muted autoplay id="vid-harmony"></video>
+          <video src="assets/harmony-plus/video/Harmony potratit.mp4" poster="assets/Harmony+.jpg" class="w-full h-full object-cover" controls playsinline loop muted autoplay preload="metadata" id="vid-harmony"></video>
           
-          <div class="absolute top-4 left-4 bg-noir-900/80 backdrop-blur-md px-3 py-1 rounded-full text-rosefemme-200 text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5 border border-rosefemme-800">
+          <div class="absolute top-4 left-4 bg-noir-900/80 backdrop-blur-md px-3 py-1 rounded-full text-rosefemme-200 text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5 border border-rosefemme-800 pointer-events-none">
             <span class="w-2 h-2 rounded-full bg-rosefemme-500 animate-pulse"></span>
             <span>Harmony+ Story</span>
           </div>
 
-          <button onclick="toggleVideoMute('vid-harmony', this)" class="absolute top-4 right-4 bg-noir-900/80 hover:bg-rosefemme-600 text-white p-2.5 rounded-full backdrop-blur-md transition">
+          <button onclick="toggleVideoMute('vid-harmony', this)" class="absolute top-4 right-4 bg-noir-900/80 hover:bg-rosefemme-600 text-white p-2.5 rounded-full backdrop-blur-md transition" title="Toggle Sound">
             <i data-lucide="volume-x" class="w-4 h-4"></i>
           </button>
         </div>
@@ -303,14 +303,14 @@
       <!-- STORY 3: FLATFEAMS -->
       <div class="bg-[#1C1514] rounded-3xl overflow-hidden shadow-2xl border border-rosefemme-900/60 relative group flex flex-col justify-between">
         <div class="relative aspect-[9/16] max-h-[520px] w-full overflow-hidden bg-black flex items-center justify-center">
-          <video src="assets/Flatfeams/video/Flatfeams potrait.mp4" class="w-full h-full object-cover" playsinline loop muted autoplay id="vid-flatfeams"></video>
+          <video src="assets/Flatfeams/video/Flatfeams potrait.mp4" poster="assets/Flatfeams.jpg" class="w-full h-full object-cover" controls playsinline loop muted autoplay preload="metadata" id="vid-flatfeams"></video>
           
-          <div class="absolute top-4 left-4 bg-noir-900/80 backdrop-blur-md px-3 py-1 rounded-full text-rosefemme-200 text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5 border border-rosefemme-800">
+          <div class="absolute top-4 left-4 bg-noir-900/80 backdrop-blur-md px-3 py-1 rounded-full text-rosefemme-200 text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5 border border-rosefemme-800 pointer-events-none">
             <span class="w-2 h-2 rounded-full bg-rosefemme-500 animate-pulse"></span>
             <span>FlatFeams Story</span>
           </div>
 
-          <button onclick="toggleVideoMute('vid-flatfeams', this)" class="absolute top-4 right-4 bg-noir-900/80 hover:bg-rosefemme-600 text-white p-2.5 rounded-full backdrop-blur-md transition">
+          <button onclick="toggleVideoMute('vid-flatfeams', this)" class="absolute top-4 right-4 bg-noir-900/80 hover:bg-rosefemme-600 text-white p-2.5 rounded-full backdrop-blur-md transition" title="Toggle Sound">
             <i data-lucide="volume-x" class="w-4 h-4"></i>
           </button>
         </div>
@@ -340,12 +340,17 @@
     <!-- Landscape Editorial Deep-Dive Explainer -->
     <div class="bg-white rounded-3xl p-8 sm:p-12 border border-rosefemme-200 shadow-xl feminine-glow grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
       <div class="lg:col-span-7 rounded-2xl overflow-hidden bg-black shadow-lg">
-        <video src="assets/Advanced/video/advanced landscape.mp4" class="w-full h-auto aspect-video object-cover" controls playsinline></video>
+        <video id="landscape-explainer-video" src="assets/Advanced/video/advanced landscape.mp4" poster="assets/Advanced.jpg" class="w-full h-auto aspect-video object-cover" controls playsinline preload="metadata"></video>
       </div>
       <div class="lg:col-span-5 space-y-4 text-left">
-        <span class="text-xs font-mono uppercase text-rosefemme-600 font-semibold tracking-wider">🔬 Cellular Breakdown</span>
-        <h3 class="font-serif text-3xl font-bold text-noir-900">How Oral Probiotics Reach the Vaginal Biome</h3>
-        <p class="text-xs sm:text-sm text-noir-700 font-light leading-relaxed">
+        <div class="flex flex-wrap gap-2">
+          <button type="button" onclick="switchLandscapeVideo('flora', this)" class="landscape-tab px-3.5 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-rosefemme-700 text-white transition">Flora+</button>
+          <button type="button" onclick="switchLandscapeVideo('harmony', this)" class="landscape-tab px-3.5 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-rosefemme-100 text-rosefemme-800 hover:bg-rosefemme-200 transition">Harmony+</button>
+          <button type="button" onclick="switchLandscapeVideo('flatfeams', this)" class="landscape-tab px-3.5 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-rosefemme-100 text-rosefemme-800 hover:bg-rosefemme-200 transition">FlatFeams</button>
+        </div>
+        <span id="landscape-explainer-tag" class="block text-xs font-mono uppercase text-rosefemme-600 font-semibold tracking-wider">🔬 Cellular Breakdown</span>
+        <h3 id="landscape-explainer-title" class="font-serif text-3xl font-bold text-noir-900">How Oral Probiotics Reach the Vaginal Biome</h3>
+        <p id="landscape-explainer-desc" class="text-xs sm:text-sm text-noir-700 font-light leading-relaxed">
           Through the natural micro-pathway of the digestive-perineal junction, live probiotic cultures migrate and colonize the vaginal epithelium without disrupting systemic organs.
         </p>
         <div class="pt-2">
@@ -510,7 +515,7 @@
     </div>
   </div>
 
-  <!-- Video Mute Toggle Helper Script -->
+  <!-- Video Mute & Explainer Switcher Helper Script -->
   <script>
     function toggleVideoMute(vidId, btn) {
       const vid = document.getElementById(vidId);
@@ -522,6 +527,58 @@
         btn.innerHTML = '<i data-lucide="volume-2" class="w-4 h-4 text-rosefemme-300"></i>';
       }
       if (window.safeCreateIcons) window.safeCreateIcons();
+    }
+
+    const LANDSCAPE_EXPLAINERS = {
+      flora: {
+        src: 'assets/Advanced/video/advanced landscape.mp4',
+        poster: 'assets/Advanced.jpg',
+        tag: '🔬 Cellular Breakdown',
+        title: 'How Oral Probiotics Reach the Vaginal Biome',
+        desc: 'Through the natural micro-pathway of the digestive-perineal junction, live probiotic cultures migrate and colonize the vaginal epithelium without disrupting systemic organs.'
+      },
+      harmony: {
+        src: 'assets/harmony-plus/video/Harmony landscape.mp4',
+        poster: 'assets/Harmony+.jpg',
+        tag: '🌙 Endocrine Equilibrium',
+        title: 'How the 40:1 Inositol Ratio Calms Ovarian Rhythm',
+        desc: 'Clinical Myo and D-Chiro Inositol signal insulin-ovarian receptors harmoniously, helping restore predictable cycles, reduce cramps, and ease PMS fluctuations.'
+      },
+      flatfeams: {
+        src: 'assets/Flatfeams/video/Flatfeam landscape.mp4',
+        poster: 'assets/Flatfeams.jpg',
+        tag: '🌿 Digestive Synergy',
+        title: 'Breaking Down Post-Meal Bloat Within 60 Minutes',
+        desc: 'Targeted multi-enzymes paired with organic ginger and dandelion root dismantle fermenting carbs and flush trapped cellular water without harsh laxatives.'
+      }
+    };
+
+    function switchLandscapeVideo(key, btn) {
+      const item = LANDSCAPE_EXPLAINERS[key];
+      const videoEl = document.getElementById('landscape-explainer-video');
+      const tagEl = document.getElementById('landscape-explainer-tag');
+      const titleEl = document.getElementById('landscape-explainer-title');
+      const descEl = document.getElementById('landscape-explainer-desc');
+      if (!item || !videoEl) return;
+
+      videoEl.pause();
+      videoEl.src = item.src;
+      videoEl.poster = item.poster;
+      videoEl.load();
+      videoEl.play().catch(() => {});
+
+      if (tagEl) tagEl.textContent = item.tag;
+      if (titleEl) titleEl.textContent = item.title;
+      if (descEl) descEl.textContent = item.desc;
+
+      document.querySelectorAll('.landscape-tab').forEach(tab => {
+        tab.classList.remove('bg-rosefemme-700', 'text-white');
+        tab.classList.add('bg-rosefemme-100', 'text-rosefemme-800');
+      });
+      if (btn) {
+        btn.classList.add('bg-rosefemme-700', 'text-white');
+        btn.classList.remove('bg-rosefemme-100', 'text-rosefemme-800');
+      }
     }
   </script>
 

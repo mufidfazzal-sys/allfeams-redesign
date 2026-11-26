@@ -56,13 +56,13 @@ const ALLFEAMS_PRODUCTS = {
     tagline: "Clinical Grade",
     image: "assets/Harmony+.jpg",
     gallery: [
-      "assets/harmony+/harmony 1.jpg",
-      "assets/harmony+/harmony 2.jpg",
-      "assets/harmony+/harmony 3.jpg",
-      "assets/harmony+/harmony 4.jpg"
+      "assets/harmony-plus/harmony 1.jpg",
+      "assets/harmony-plus/harmony 2.jpg",
+      "assets/harmony-plus/harmony 3.jpg",
+      "assets/harmony-plus/harmony 4.jpg"
     ],
-    video: "assets/harmony+/video/Harmony potratit.mp4",
-    videoLandscape: "assets/harmony+/video/Harmony landscape.mp4",
+    video: "assets/harmony-plus/video/Harmony potratit.mp4",
+    videoLandscape: "assets/harmony-plus/video/Harmony landscape.mp4",
     description: "Potent 40:1 Myo & D-Chiro Inositol ratio with folate & vitex. Regulates monthly cycles, eases intense PMS, and relieves ovarian tension.",
     ingredients: [
       "40:1 Inositol Blend",
