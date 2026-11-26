@@ -1,0 +1,325 @@
+/**
+ * ALLFEAMS™ - Luxury Feminine Styling & Micro-Interactions
+ * File: css/luxury-styles.css
+ * 
+ * Tailored with Haute Botanical, Silk Blush, and Warm Rose-Gold tones
+ * designed specifically for female self-care and wellness elegance.
+ */
+
+/* Global Mobile Viewport & Overflow Protection (Sticky-Friendly) */
+html {
+  scroll-behavior: smooth;
+  max-width: 100%;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip; /* Modern CSS standard that clips horizontal overflow without breaking position: sticky */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Sticky Header Still/Pinned Behavior */
+#main-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+#main-header.is-pinned {
+  background: rgba(253, 248, 246, 0.98) !important;
+  box-shadow: 0 4px 25px -2px rgba(82, 36, 28, 0.1) !important;
+  border-bottom-color: rgba(210, 158, 145, 0.6) !important;
+}
+
+/* ==========================================================================
+   ALLFEAMS™ GLITCH-FREE LUXURY SMOOTH PAGE TRANSITIONS
+   ========================================================================== */
+
+/* Glitch-free smooth page entry: pure opacity transition, 0 reflow, 0 containing block issues */
+body {
+  animation: softSilkFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes softSilkFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Fullscreen Silk Blush Exit Curtain */
+#allfeams-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(250, 245, 242, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+}
+
+#allfeams-veil.is-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Luxury Top Progress Shimmer Bar */
+#allfeams-veil-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #8F4E41 0%, #C07C6E 30%, #E4BFB5 60%, #D4AF37 100%);
+  background-size: 200% 100%;
+  z-index: 1000000;
+  box-shadow: 0 1px 8px rgba(192, 124, 110, 0.4);
+  transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Minimalist Elegant Center Brand in Veil */
+.veil-brand-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transform: scale(0.98);
+  opacity: 0;
+  transition: transform 0.22s ease-out, opacity 0.22s ease-out;
+}
+
+#allfeams-veil.is-active .veil-brand-card {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.veil-emblem {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border: 1px solid rgba(210, 158, 145, 0.45);
+  box-shadow: 0 8px 20px -4px rgba(192, 124, 110, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.veil-brand-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: #1D1514;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.veil-brand-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: #AA6557;
+  text-transform: uppercase;
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+/* Smooth Interactive Nav Indicator */
+.nav-active-pill {
+  color: #AA6557 !important;
+  font-weight: 600 !important;
+  position: relative;
+}
+
+.nav-active-pill::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100% !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #AA6557, #D4AF37) !important;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+/* Luxury Letter Spacing */
+.tracking-luxury {
+  letter-spacing: 0.18em;
+}
+
+.tracking-widest-plus {
+  letter-spacing: 0.25em;
+}
+
+/* Glassmorphism Header Blur with subtle silk blush tint */
+.glass-nav {
+  background: rgba(253, 248, 246, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Subtle Gold Button Shimmer Animation on Hover */
+.btn-gold-shimmer {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-gold-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: all 0.75s ease;
+}
+
+.btn-gold-shimmer:hover::after {
+  left: 120%;
+}
+
+/* Rose-Gold Luxury Gradient Button */
+.btn-rosegold {
+  background: linear-gradient(135deg, #C07C6E 0%, #D48B7B 50%, #C5A059 100%);
+  color: #FFFFFF;
+  box-shadow: 0 10px 25px -5px rgba(192, 124, 110, 0.35);
+  transition: all 0.35s ease;
+}
+
+.btn-rosegold:hover {
+  background: linear-gradient(135deg, #AA6557 0%, #C07C6E 50%, #B89248 100%);
+  box-shadow: 0 15px 30px -5px rgba(192, 124, 110, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Soft Feminine Ambient Glow */
+.feminine-glow {
+  box-shadow: 0 20px 40px -15px rgba(240, 216, 209, 0.6);
+}
+
+.feminine-glow-gold {
+  box-shadow: 0 20px 40px -15px rgba(197, 160, 89, 0.25);
+}
+
+/* Custom Luxury Scrollbars with gentle rose-sand finish */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF6F4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DEC0B6;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C07C6E;
+}
+
+/* Utility to hide scrollbars on mobile horizontal sliders */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Card hover lift effect */
+.luxury-card-hover {
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.luxury-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(116, 58, 47, 0.08);
+  border-color: rgba(222, 192, 182, 0.8);
+}
+
+/* Subtle feminine floating pulse */
+@keyframes softPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+}
+
+.soft-pulse {
+  animation: softPulse 4s ease-in-out infinite;
+}
+
+/* Image Zoom & Lightbox Luxury Micro-Interactions */
+.cursor-zoom-in {
+  cursor: zoom-in;
+}
+
+.cursor-zoom-out {
+  cursor: zoom-out;
+}
+
+/* Clickable product image hover pulse */
+img.cursor-zoom-in {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+}
+
+img.cursor-zoom-in:hover {
+  filter: brightness(1.03) contrast(1.02);
+}
+
+/* Mobile-friendly touch scrolling and tap highlights */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* Explicit Lightbox Visibility Protection */
+#allfeams-lightbox {
+  display: none;
+}
+
+#allfeams-lightbox.is-open {
+  display: flex !important;
+}
+
+#allfeams-lightbox img#lightbox-image {
+  max-height: 64vh !important;
+  max-width: 86vw !important;
+  display: block !important;
+  object-fit: contain !important;
+}

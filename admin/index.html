@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALLFEAMS™ | Executive Operations &amp; Merchant Dashboard</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS Core Framework -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            sand: {
+              50: '#FDFCFB',
+              100: '#FAF8F5',
+              200: '#F4EFEA',
+              300: '#EBE3DA',
+              400: '#D8C9BB',
+              500: '#B8A494',
+            },
+            gold: {
+              400: '#D4AF37',
+              500: '#C5A059',
+              600: '#AD8941',
+              700: '#8A6A2C',
+            },
+            noir: {
+              950: '#0A0908',
+              900: '#11100F',
+              850: '#171614',
+              800: '#22201D',
+              700: '#33302B',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    window.safeCreateIcons = function() {
+      try {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      } catch (e) {
+        console.warn('Lucide icons error handled:', e);
+      }
+    };
+  </script>
+
+  <!-- Admin Custom Luxury Stylesheet -->
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="bg-[#0D0C0B] text-sand-200 antialiased min-h-screen selection:bg-gold-500 selection:text-noir-900">
+
+  <!-- ========================================================================= -->
+  <!-- 1. SECURITY PIN LOCK SCREEN (Default passcode: 8888)                      -->
+  <!-- ========================================================================= -->
+  <div id="admin-lock-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-[#0D0C0B] px-4">
+    <div class="relative w-full max-w-md p-8 md:p-10 rounded-3xl admin-card border border-sand-300/15 shadow-2xl text-center backdrop-blur-xl">
+      <!-- Glow ambient -->
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-48 h-48 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-noir-800 border border-gold-500/30 text-gold-400 mb-6 shadow-inner">
+        <i data-lucide="shield-check" class="w-8 h-8"></i>
+      </div>
+
+      <p class="text-xs font-mono uppercase tracking-widest text-gold-500 font-semibold mb-1">ALLFEAMS™ Private Terminal</p>
+      <h1 class="text-2xl font-serif font-bold text-white mb-2">Merchant Executive Access</h1>
+      <p class="text-xs text-sand-400 mb-8 leading-relaxed">
+        Restricted environment for orders fulfillment, discrete logistics &amp; inventory operations.
+      </p>
+
+      <form onsubmit="event.preventDefault(); AdminApp.login(document.getElementById('admin-pin-input').value);" class="space-y-4">
+        <div>
+          <label for="admin-pin-input" class="block text-left text-[11px] font-mono uppercase tracking-wider text-sand-400 mb-2">
+            Security PIN / Passcode
+          </label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="admin-pin-input" 
+              placeholder="••••" 
+              maxlength="10"
+              class="w-full text-center tracking-[0.5em] text-2xl font-mono py-3.5 px-4 bg-noir-950/80 border border-sand-300/20 rounded-xl text-white placeholder-sand-500 focus:outline-none focus:border-gold-500 transition"
+              autofocus
+            >
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-3.5 px-6 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-noir-950 font-bold text-xs uppercase tracking-widest rounded-xl transition shadow-lg shadow-gold-500/10 flex items-center justify-center space-x-2"
+        >
+          <span>Unlock Terminal</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </form>
+
+      <div class="mt-6 pt-6 border-t border-sand-300/10 flex items-center justify-between text-xs text-sand-400">
+        <span class="text-[11px]">Default PIN: <strong class="text-gold-400 font-mono">8888</strong></span>
+        <button 
+          type="button" 
+          onclick="document.getElementById('admin-pin-input').value = '8888'; AdminApp.login('8888');" 
+          class="text-[11px] text-gold-400 hover:text-white underline font-medium transition"
+        >
+          Quick Unlock
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 2. MAIN EXECUTIVE DASHBOARD LAYOUT                                        -->
+  <!-- ========================================================================= -->
+  <div id="admin-main-dashboard" class="hidden min-h-screen flex flex-col md:flex-row">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="admin-sidebar w-full md:w-64 flex-shrink-0 flex flex-col justify-between p-6 border-b md:border-b-0 md:border-r border-sand-300/10 z-20">
+      <div>
+        <!-- Brand Header -->
+        <div class="flex items-center space-x-3 mb-8 pb-6 border-b border-sand-300/10">
+          <img src="../assets/logo.png" alt="ALLFEAMS" class="h-8 w-auto object-contain brightness-110">
+          <div>
+            <span class="text-[10px] font-mono tracking-widest uppercase text-gold-500 block leading-tight">Operations</span>
+            <span class="text-xs font-serif font-bold text-white tracking-wider">Executive Suite</span>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="space-y-1.5">
+          <button 
+            type="button"
+            data-tab="overview" 
+            class="nav-tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition text-left bg-gold-500/15 text-gold-400 border border-gold-500"
+          >
+            <i data-lucide="layout-dashboard" class="w-4 h-4 flex-shrink-0"></i>
+            <span>Overview &amp; Metrics</span>
+          </button>
+
+          <button 
+            type="button"
+            data-tab="orders" 
+            class="nav-tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition text-left text-sand-400 hover:text-white hover:bg-white/[0.03] border border-transparent"
+          >
+            <i data-lucide="shopping-bag" class="w-4 h-4 flex-shrink-0"></i>
+            <span>Orders &amp; Dispatch</span>
+          </button>
+
+          <button 
+            type="button"
+            data-tab="products" 
+            class="nav-tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition text-left text-sand-400 hover:text-white hover:bg-white/[0.03] border border-transparent"
+          >
+            <i data-lucide="package" class="w-4 h-4 flex-shrink-0"></i>
+            <span>Formulations &amp; Price</span>
+          </button>
+
+          <button 
+            type="button"
+            data-tab="promos" 
+            class="nav-tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition text-left text-sand-400 hover:text-white hover:bg-white/[0.03] border border-transparent"
+          >
+            <i data-lucide="tag" class="w-4 h-4 flex-shrink-0"></i>
+            <span>Promotions &amp; VIP</span>
+          </button>
+
+          <button 
+            type="button"
+            data-tab="reviews" 
+            class="nav-tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition text-left text-sand-400 hover:text-white hover:bg-white/[0.03] border border-transparent"
+          >
+            <i data-lucide="star" class="w-4 h-4 flex-shrink-0"></i>
+            <span>Verified Reviews</span>
+          </button>
+
+          <button 
+            type="button"
+            data-tab="shipping" 
+            class="nav-tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition text-left text-sand-400 hover:text-white hover:bg-white/[0.03] border border-transparent"
+          >
+            <i data-lucide="truck" class="w-4 h-4 flex-shrink-0"></i>
+            <span>Discreet Packaging</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Footer Info & Actions -->
+      <div class="pt-6 border-t border-sand-300/10 space-y-3 mt-6">
+        <a 
+          href="../index.html" 
+          target="_blank" 
+          class="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs text-sand-300 hover:text-white hover:bg-white/[0.04] transition group"
+        >
+          <span class="flex items-center space-x-2">
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-gold-400"></i>
+            <span>Open Storefront</span>
+          </span>
+          <span class="text-[10px] text-sand-500 group-hover:text-sand-300">Live ↗</span>
+        </a>
+
+        <div class="flex items-center justify-between px-3.5 py-2 bg-noir-850 rounded-xl border border-sand-300/5">
+          <div class="flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-[11px] text-sand-300 font-mono">Discreet Node</span>
+          </div>
+          <button 
+            type="button" 
+            onclick="AdminApp.logout()" 
+            class="text-[11px] text-sand-400 hover:text-rose-400 transition"
+            title="Lock Dashboard"
+          >
+            <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT AREA -->
+    <main class="flex-1 flex flex-col min-w-0 bg-[#0F0E0D] overflow-y-auto max-h-screen">
+      
+      <!-- TOP NAVIGATION BAR -->
+      <header class="px-6 md:px-8 py-4 border-b border-sand-300/10 flex flex-wrap items-center justify-between gap-4 sticky top-0 bg-[#0F0E0D]/90 backdrop-blur-md z-10">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="text-[11px] font-mono uppercase text-gold-500 font-semibold tracking-wider">ALLFEAMS Inc. Operations</span>
+            <span class="text-sand-500">&bull;</span>
+            <span class="text-[11px] text-sand-400">Austin Fulfillment Hub</span>
+          </div>
+          <h2 class="text-lg md:text-xl font-serif font-bold text-white tracking-wide">Merchant Executive Control</h2>
+        </div>
+
+        <div class="flex items-center space-x-3">
+          <!-- Live Store Health Indicator -->
+          <div class="hidden sm:inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-xs font-mono">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>Storefront Online (Dawn 15.0)</span>
+          </div>
+
+          <!-- Export CSV Quick Action -->
+          <button 
+            type="button" 
+            onclick="AdminApp.exportOrdersCsv()" 
+            class="px-3.5 py-1.5 bg-noir-800 hover:bg-gold-500 hover:text-noir-950 border border-sand-300/15 rounded-lg text-xs font-medium text-sand-200 transition flex items-center space-x-2 shadow-sm"
+          >
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>Export CSV</span>
+          </button>
+
+          <!-- Storefront Quick Link -->
+          <a 
+            href="../index.html" 
+            target="_blank" 
+            class="px-3.5 py-1.5 bg-gold-500 hover:bg-gold-400 text-noir-950 rounded-lg text-xs font-bold uppercase tracking-wider transition flex items-center space-x-1.5 shadow-md shadow-gold-500/10"
+          >
+            <span>Live Site</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- CONTENT BODY -->
+      <div class="p-6 md:p-8 space-y-8 flex-1">
+
+        <!-- =================================================================== -->
+        <!-- TAB 1: OVERVIEW & ANALYTICS                                         -->
+        <!-- =================================================================== -->
+        <section id="tab-overview" class="admin-tab-content space-y-8">
+          
+          <!-- KPI Metric Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Total Revenue -->
+            <div class="admin-card p-5 rounded-2xl">
+              <div class="flex items-center justify-between text-sand-400 text-xs font-mono mb-2">
+                <span>TOTAL REVENUE (MTD)</span>
+                <span class="p-1.5 rounded-lg bg-gold-500/10 text-gold-400"><i data-lucide="dollar-sign" class="w-4 h-4"></i></span>
+              </div>
+              <div id="stat-total-revenue" class="text-2xl font-serif font-bold text-white tracking-wide">$374.31</div>
+              <div class="mt-2 flex items-center text-[11px] text-emerald-400 space-x-1">
+                <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+                <span>+24.6% vs previous cycle</span>
+              </div>
+            </div>
+
+            <!-- Total Orders -->
+            <div class="admin-card p-5 rounded-2xl">
+              <div class="flex items-center justify-between text-sand-400 text-xs font-mono mb-2">
+                <span>TOTAL ORDERS</span>
+                <span class="p-1.5 rounded-lg bg-blue-500/10 text-blue-400"><i data-lucide="shopping-cart" class="w-4 h-4"></i></span>
+              </div>
+              <div id="stat-total-orders" class="text-2xl font-serif font-bold text-white tracking-wide">5</div>
+              <div class="mt-2 flex items-center text-[11px] text-emerald-400 space-x-1">
+                <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+                <span>100% Verified conversion</span>
+              </div>
+            </div>
+
+            <!-- Average Order Value (AOV) -->
+            <div class="admin-card p-5 rounded-2xl">
+              <div class="flex items-center justify-between text-sand-400 text-xs font-mono mb-2">
+                <span>AVERAGE ORDER VALUE</span>
+                <span class="p-1.5 rounded-lg bg-purple-500/10 text-purple-400"><i data-lucide="layers" class="w-4 h-4"></i></span>
+              </div>
+              <div id="stat-aov" class="text-2xl font-serif font-bold text-white tracking-wide">$74.86</div>
+              <div class="mt-2 flex items-center text-[11px] text-gold-400 space-x-1">
+                <span>Bundle tier uplift active</span>
+              </div>
+            </div>
+
+            <!-- Pending Fulfillment -->
+            <div class="admin-card p-5 rounded-2xl">
+              <div class="flex items-center justify-between text-sand-400 text-xs font-mono mb-2">
+                <span>PENDING DISPATCH</span>
+                <span class="p-1.5 rounded-lg bg-amber-500/10 text-amber-400"><i data-lucide="clock" class="w-4 h-4"></i></span>
+              </div>
+              <div id="stat-pending-orders" class="text-2xl font-serif font-bold text-amber-300 tracking-wide">2</div>
+              <div class="mt-2 flex items-center text-[11px] text-sand-400 space-x-1">
+                <i data-lucide="shield" class="w-3.5 h-3.5 text-gold-500"></i>
+                <span>Discreet Plain Carton required</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sales Trajectory & Dispatch Velocity Graph -->
+          <div class="admin-card p-6 rounded-3xl">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div>
+                <h3 class="text-base font-serif font-bold text-white">Daily Acquisition &amp; Revenue Velocity</h3>
+                <p class="text-xs text-sand-400">Real-time checkout velocity across single bottle vs 3/6-bottle reset subscriptions</p>
+              </div>
+              <div class="flex items-center space-x-2 text-xs font-mono">
+                <span class="inline-flex items-center space-x-1.5 text-gold-400">
+                  <span class="w-2.5 h-2.5 rounded-full bg-gold-400"></span>
+                  <span>Gross Sales</span>
+                </span>
+                <span class="text-sand-500">|</span>
+                <span class="inline-flex items-center space-x-1.5 text-emerald-400">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                  <span>Discreet Dispatches</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- SVG Stylized Wave Chart -->
+            <div class="w-full h-48 relative overflow-hidden">
+              <svg viewBox="0 0 800 200" class="w-full h-full preserve-3d" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartGoldGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#C5A059" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#C5A059" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+                <!-- Grid Lines -->
+                <line x1="0" y1="40" x2="800" y2="40" stroke="#2C2825" stroke-dasharray="4"/>
+                <line x1="0" y1="90" x2="800" y2="90" stroke="#2C2825" stroke-dasharray="4"/>
+                <line x1="0" y1="140" x2="800" y2="140" stroke="#2C2825" stroke-dasharray="4"/>
+                
+                <!-- Fill Area -->
+                <polygon points="0,170 120,130 240,145 360,95 480,110 600,60 720,75 800,30 800,200 0,200" fill="url(#chartGoldGrad)"/>
+                
+                <!-- Stroke Line -->
+                <polyline 
+                  points="0,170 120,130 240,145 360,95 480,110 600,60 720,75 800,30" 
+                  fill="none" 
+                  stroke="#C5A059" 
+                  stroke-width="3" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"
+                  class="chart-line"
+                />
+
+                <!-- Point Highlights -->
+                <circle cx="360" cy="95" r="4" fill="#1A1816" stroke="#C5A059" stroke-width="2"/>
+                <circle cx="600" cy="60" r="4" fill="#1A1816" stroke="#C5A059" stroke-width="2"/>
+                <circle cx="800" cy="30" r="5" fill="#D4AF37" stroke="#FFFFFF" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="flex justify-between text-[11px] font-mono text-sand-500 mt-2 px-1">
+              <span>13 Nov</span>
+              <span>14 Nov</span>
+              <span>15 Nov</span>
+              <span>16 Nov</span>
+              <span>17 Nov</span>
+              <span>18 Nov</span>
+              <span>Today (Peak Velocity)</span>
+            </div>
+          </div>
+
+          <!-- Two Column: Recent Orders & Stock Levels -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Left: Recent Orders Table (2 Cols) -->
+            <div class="lg:col-span-2 admin-card p-6 rounded-3xl">
+              <div class="flex items-center justify-between mb-4">
+                <div>
+                  <h3 class="text-base font-serif font-bold text-white">Recent Customer Checkouts</h3>
+                  <p class="text-xs text-sand-400">Incoming verified transactions requiring discreet processing</p>
+                </div>
+                <button 
+                  type="button" 
+                  onclick="AdminApp.switchTab('orders')" 
+                  class="text-xs text-gold-400 hover:text-white transition font-medium underline"
+                >
+                  View All Orders →
+                </button>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                  <thead>
+                    <tr class="border-b border-sand-300/10 text-[10px] font-mono uppercase text-sand-400">
+                      <th class="py-2.5 px-4">Order ID</th>
+                      <th class="py-2.5 px-4">Customer</th>
+                      <th class="py-2.5 px-4">Formulations</th>
+                      <th class="py-2.5 px-4">Total</th>
+                      <th class="py-2.5 px-4">Status</th>
+                      <th class="py-2.5 px-4 text-right">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="overview-recent-orders" class="divide-y divide-sand-300/5">
+                    <!-- Populated by admin.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Right: Stock & Operations Status (1 Col) -->
+            <div class="admin-card p-6 rounded-3xl space-y-6">
+              <div>
+                <h3 class="text-base font-serif font-bold text-white">Inventory Reserves</h3>
+                <p class="text-xs text-sand-400">Live stock in cGMP Texas Warehouse</p>
+              </div>
+
+              <div class="space-y-4 text-xs">
+                <!-- Flora+ -->
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium text-white">Advanced Flora+</span>
+                    <span class="font-mono text-emerald-400 font-bold">1,420 units</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-noir-800 overflow-hidden">
+                    <div class="h-full bg-emerald-500 rounded-full" style="width: 82%"></div>
+                  </div>
+                </div>
+
+                <!-- Harmony+ -->
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium text-white">Harmony+ Ovarian Support</span>
+                    <span class="font-mono text-emerald-400 font-bold">890 units</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-noir-800 overflow-hidden">
+                    <div class="h-full bg-emerald-500 rounded-full" style="width: 65%"></div>
+                  </div>
+                </div>
+
+                <!-- FlatFeams -->
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium text-white">FlatFeams Craving &amp; Debloat</span>
+                    <span class="font-mono text-amber-400 font-bold">340 units</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-noir-800 overflow-hidden">
+                    <div class="h-full bg-amber-500 rounded-full" style="width: 32%"></div>
+                  </div>
+                </div>
+
+                <!-- Moisture Max -->
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium text-white">Moisture Max Pro</span>
+                    <span class="font-mono text-emerald-400 font-bold">610 units</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-noir-800 overflow-hidden">
+                    <div class="h-full bg-emerald-500 rounded-full" style="width: 55%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Discreet Protocol Box -->
+              <div class="p-4 rounded-2xl bg-noir-850 border border-gold-500/20 text-xs space-y-2">
+                <div class="flex items-center space-x-2 text-gold-400 font-bold">
+                  <i data-lucide="lock" class="w-4 h-4"></i>
+                  <span>Discreet Packaging Policy</span>
+                </div>
+                <p class="text-sand-400 text-[11px] leading-relaxed">
+                  All customer deliveries are packaged in plain kraft corrugated boxes with generic return address "AF Fulfillment Logistics, TX". Outer labels contain zero supplement names.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 2: ORDERS & FULFILLMENT                                         -->
+        <!-- =================================================================== -->
+        <section id="tab-orders" class="admin-tab-content space-y-6 hidden">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-serif font-bold text-white">Orders Fulfillment &amp; Dispatch</h2>
+              <p class="text-xs text-sand-400">Manage orders, update tracking numbers, and print discreet packing slips.</p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="flex flex-wrap items-center gap-3">
+              <!-- Search Input -->
+              <div class="relative">
+                <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-sand-500"></i>
+                <input 
+                  type="text" 
+                  id="orders-search-input"
+                  oninput="AdminApp.renderOrdersTable(this.value, document.getElementById('orders-filter-status').value)"
+                  placeholder="Search customer, ID, email..." 
+                  class="pl-9 pr-4 py-2 bg-noir-850 border border-sand-300/15 rounded-xl text-xs text-white placeholder-sand-500 focus:outline-none focus:border-gold-500 w-56 sm:w-64"
+                >
+              </div>
+
+              <!-- Status Dropdown -->
+              <select 
+                id="orders-filter-status"
+                onchange="AdminApp.renderOrdersTable(document.getElementById('orders-search-input').value, this.value)"
+                class="py-2 px-3 bg-noir-850 border border-sand-300/15 rounded-xl text-xs text-sand-200 focus:outline-none focus:border-gold-500"
+              >
+                <option value="all">All Statuses</option>
+                <option value="unfulfilled">Unfulfilled / Pending</option>
+                <option value="discreet packaged">Discreet Packaged</option>
+                <option value="shipped">Shipped</option>
+                <option value="delivered">Delivered</option>
+              </select>
+
+              <!-- Export CSV -->
+              <button 
+                type="button" 
+                onclick="AdminApp.exportOrdersCsv()" 
+                class="py-2 px-3.5 bg-noir-800 hover:bg-gold-500 hover:text-noir-950 border border-sand-300/15 rounded-xl text-xs font-medium text-sand-200 transition flex items-center space-x-1.5"
+              >
+                <i data-lucide="file-spreadsheet" class="w-3.5 h-3.5"></i>
+                <span>Export CSV</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Orders Table Card -->
+          <div class="admin-card rounded-3xl overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead class="bg-noir-900 border-b border-sand-300/10">
+                  <tr class="text-[10px] font-mono uppercase text-sand-400">
+                    <th class="py-3 px-4">Order ID</th>
+                    <th class="py-3 px-4">Customer Details</th>
+                    <th class="py-3 px-4">Items / Formulations</th>
+                    <th class="py-3 px-4">Amount</th>
+                    <th class="py-3 px-4">Fulfillment &amp; Box</th>
+                    <th class="py-3 px-4">Carrier Tracking</th>
+                    <th class="py-3 px-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-table-body" class="divide-y divide-sand-300/5">
+                  <!-- Populated by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 3: FORMULATIONS & PRICING                                       -->
+        <!-- =================================================================== -->
+        <section id="tab-products" class="admin-tab-content space-y-6 hidden">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-serif font-bold text-white">Product Catalog &amp; Retail Pricing</h2>
+              <p class="text-xs text-sand-400">Manage formulations, adjust live MSRP prices, and monitor SKU inventory.</p>
+            </div>
+            <div class="text-xs font-mono text-sand-400 bg-noir-850 px-3.5 py-2 rounded-xl border border-sand-300/10">
+              Active Catalog: <strong class="text-gold-400">4 Master Formulations</strong>
+            </div>
+          </div>
+
+          <!-- Products Table Card -->
+          <div class="admin-card rounded-3xl overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead class="bg-noir-900 border-b border-sand-300/10">
+                  <tr class="text-[10px] font-mono uppercase text-sand-400">
+                    <th class="py-3 px-4">Product Formulation</th>
+                    <th class="py-3 px-4">Current MSRP</th>
+                    <th class="py-3 px-4">Original Compare</th>
+                    <th class="py-3 px-4">Stock Status</th>
+                    <th class="py-3 px-4">Reviews &amp; Score</th>
+                    <th class="py-3 px-4 text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="products-table-body" class="divide-y divide-sand-300/5">
+                  <!-- Populated by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 4: PROMOTIONS & VIP CODES                                       -->
+        <!-- =================================================================== -->
+        <section id="tab-promos" class="admin-tab-content space-y-6 hidden">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-serif font-bold text-white">Promotions, Coupons &amp; VIP Campaigns</h2>
+              <p class="text-xs text-sand-400">Configure discount vouchers, percentage coupons, and automated affiliate tracking.</p>
+            </div>
+            <button 
+              type="button" 
+              onclick="AdminApp.createPromo()" 
+              class="px-4 py-2 bg-gold-500 hover:bg-gold-400 text-noir-950 font-bold text-xs uppercase tracking-wider rounded-xl transition flex items-center space-x-2 shadow-md shadow-gold-500/10"
+            >
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              <span>Create New Promo</span>
+            </button>
+          </div>
+
+          <!-- Promos Table Card -->
+          <div class="admin-card rounded-3xl overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead class="bg-noir-900 border-b border-sand-300/10">
+                  <tr class="text-[10px] font-mono uppercase text-sand-400">
+                    <th class="py-3 px-4">Coupon Code</th>
+                    <th class="py-3 px-4">Discount Value</th>
+                    <th class="py-3 px-4">Campaign Strategy</th>
+                    <th class="py-3 px-4">Redemptions</th>
+                    <th class="py-3 px-4">Active State</th>
+                    <th class="py-3 px-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="promos-table-body" class="divide-y divide-sand-300/5">
+                  <!-- Populated by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 5: REVIEWS MODERATION                                           -->
+        <!-- =================================================================== -->
+        <section id="tab-reviews" class="admin-tab-content space-y-6 hidden">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-serif font-bold text-white">Verified Customer Testimonials</h2>
+              <p class="text-xs text-sand-400">Manage real customer reviews, clinical concern tags, and verified buyer badges.</p>
+            </div>
+            <div class="text-xs font-mono text-sand-400 bg-noir-850 px-3.5 py-2 rounded-xl border border-sand-300/10">
+              Verified Average: <strong class="text-gold-400">4.92 / 5.0 (98.4% Satisfaction)</strong>
+            </div>
+          </div>
+
+          <!-- Reviews Table Card -->
+          <div class="admin-card rounded-3xl overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead class="bg-noir-900 border-b border-sand-300/10">
+                  <tr class="text-[10px] font-mono uppercase text-sand-400">
+                    <th class="py-3 px-4">Verified Customer</th>
+                    <th class="py-3 px-4">Rating &amp; Concern Tag</th>
+                    <th class="py-3 px-4">Testimonial Excerpt</th>
+                    <th class="py-3 px-4">Formula Used</th>
+                    <th class="py-3 px-4 text-right">Publish Status</th>
+                  </tr>
+                </thead>
+                <tbody id="reviews-table-body" class="divide-y divide-sand-300/5">
+                  <!-- Populated by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 6: DISCREET PACKAGING & LOGISTICS PROTOCOL                      -->
+        <!-- =================================================================== -->
+        <section id="tab-shipping" class="admin-tab-content space-y-6 hidden">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-serif font-bold text-white">Discreet Packaging &amp; Privacy Protocols</h2>
+              <p class="text-xs text-sand-400">Configure customer privacy, packaging material standards, and carrier stealth labels.</p>
+            </div>
+            <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-mono">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+              <span>100% Privacy Enforced</span>
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Privacy Rule Card -->
+            <div class="admin-card p-6 rounded-3xl space-y-4">
+              <div class="flex items-center space-x-3 text-gold-400">
+                <div class="p-2 rounded-xl bg-gold-500/10">
+                  <i data-lucide="box" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-base font-bold text-white">Exterior Outer Box Standard</h3>
+              </div>
+              <p class="text-xs text-sand-300 leading-relaxed">
+                Every single order from ALLFEAMS™ is dispatched in plain brown kraft corrugated packaging. The exterior contains:
+              </p>
+              <ul class="text-xs text-sand-400 space-y-2 list-disc list-inside">
+                <li><strong class="text-white">NO</strong> brand logos or product imagery on the exterior.</li>
+                <li><strong class="text-white">NO</strong> medical or gynecological keywords ("vaginal", "yeast", "ovarian").</li>
+                <li>Sender name printed strictly as: <strong class="text-gold-400 font-mono">AF Logistics Co.</strong></li>
+                <li>Tamper-evident reinforced paper tape without branding.</li>
+              </ul>
+              <div class="pt-2">
+                <span class="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs rounded-lg font-mono">
+                  ✓ Active for all global &amp; US domestic shipments
+                </span>
+              </div>
+            </div>
+
+            <!-- Packing Slip Protocol -->
+            <div class="admin-card p-6 rounded-3xl space-y-4">
+              <div class="flex items-center space-x-3 text-gold-400">
+                <div class="p-2 rounded-xl bg-gold-500/10">
+                  <i data-lucide="printer" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-base font-bold text-white">Discreet Packing Slip Generator</h3>
+              </div>
+              <p class="text-xs text-sand-300 leading-relaxed">
+                Generate clean packing slips for your fulfillment staff that clearly show formulas for packing accuracy while certifying privacy seals.
+              </p>
+              <div class="p-4 rounded-2xl bg-noir-850 border border-sand-300/10 text-xs space-y-2">
+                <div class="flex justify-between text-sand-400 text-[11px] font-mono">
+                  <span>PACKING SLIP PREVIEW</span>
+                  <span class="text-gold-400">AF-SLIP-v2.1</span>
+                </div>
+                <p class="font-mono text-white text-[11px]">
+                  ALLFEAMS Quality Assurance &bull; cGMP Certified<br>
+                  Packaging Standard: Plain Kraft Envelope / Carton
+                </p>
+              </div>
+              <button 
+                type="button" 
+                onclick="AdminApp.printPackingSlip('ALF-9482')" 
+                class="w-full py-2.5 bg-noir-800 hover:bg-gold-500 hover:text-noir-950 text-sand-200 rounded-xl text-xs font-bold uppercase tracking-wider transition"
+              >
+                Test Print Sample Slip (ALF-9482)
+              </button>
+            </div>
+
+            <!-- Carrier Stealth Routing -->
+            <div class="admin-card p-6 rounded-3xl space-y-4">
+              <div class="flex items-center space-x-3 text-gold-400">
+                <div class="p-2 rounded-xl bg-gold-500/10">
+                  <i data-lucide="send" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-base font-bold text-white">Integrated Stealth Carriers</h3>
+              </div>
+              <p class="text-xs text-sand-300 leading-relaxed">
+                Direct API label generation connects with domestic and international express partners with discreet declaration codes.
+              </p>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="p-3 bg-noir-850 rounded-xl border border-sand-300/10 flex items-center space-x-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span class="text-white font-medium">USPS Priority</span>
+                </div>
+                <div class="p-3 bg-noir-850 rounded-xl border border-sand-300/10 flex items-center space-x-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span class="text-white font-medium">FedEx 2-Day Air</span>
+                </div>
+                <div class="p-3 bg-noir-850 rounded-xl border border-sand-300/10 flex items-center space-x-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span class="text-white font-medium">DHL Global Mail</span>
+                </div>
+                <div class="p-3 bg-noir-850 rounded-xl border border-sand-300/10 flex items-center space-x-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span class="text-white font-medium">Royal Mail Tracked</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Export & Security Backup -->
+            <div class="admin-card p-6 rounded-3xl space-y-4">
+              <div class="flex items-center space-x-3 text-gold-400">
+                <div class="p-2 rounded-xl bg-gold-500/10">
+                  <i data-lucide="database" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-base font-bold text-white">Merchant Data &amp; Security</h3>
+              </div>
+              <p class="text-xs text-sand-300 leading-relaxed">
+                All order records and pricing modifications are securely persisted in local state storage with zero external tracking cookies.
+              </p>
+              <div class="flex gap-3">
+                <button 
+                  type="button" 
+                  onclick="AdminApp.exportOrdersCsv()" 
+                  class="flex-1 py-2.5 bg-gold-500 hover:bg-gold-400 text-noir-950 font-bold text-xs uppercase tracking-wider rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md shadow-gold-500/10"
+                >
+                  <i data-lucide="download" class="w-4 h-4"></i>
+                  <span>Download Full CSV</span>
+                </button>
+                <button 
+                  type="button" 
+                  onclick="if(confirm('Reset sample orders and promos to defaults?')){localStorage.removeItem('allfeams_admin_orders');localStorage.removeItem('allfeams_admin_promos');location.reload();}" 
+                  class="px-4 py-2.5 bg-noir-850 hover:bg-rose-900/40 text-sand-400 hover:text-rose-300 rounded-xl text-xs font-mono transition border border-sand-300/10"
+                >
+                  Reset Sample Data
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 3. ORDER DETAIL MODAL                                                     -->
+  <!-- ========================================================================= -->
+  <div id="order-detail-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
+    <div class="admin-card w-full max-w-lg p-6 rounded-3xl border border-sand-300/20 shadow-2xl relative">
+      <button 
+        type="button" 
+        onclick="AdminApp.closeOrderModal()" 
+        class="absolute top-5 right-5 text-sand-400 hover:text-white transition p-1 rounded-lg hover:bg-white/10"
+        title="Close"
+      >
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="order-modal-content">
+        <!-- Injected dynamically by AdminApp.viewOrder(orderId) in admin.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Load Data Sources -->
+  <script src="../js/products-data.js"></script>
+  <script src="../js/reviews-data.js"></script>
+
+  <!-- Load Admin Application Logic -->
+  <script src="admin.js"></script>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.safeCreateIcons();
+    });
+  </script>
+</body>
+</html>

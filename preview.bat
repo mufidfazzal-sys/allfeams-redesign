@@ -1,0 +1,3 @@
+@echo off
+echo Opening ALLFEAMS Luxury Redesign Prototype in your default browser...
+start "" "%~dp0index.html"

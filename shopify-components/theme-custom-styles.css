@@ -1,0 +1,64 @@
+/**
+ * ALLFEAMS™ - Shopify Theme Luxury Feminine Styling Snippet
+ * File: shopify-components/theme-custom-styles.css
+ * 
+ * Paste into Shopify Admin -> Online Store -> Themes -> Customize -> Theme Settings -> Custom CSS
+ * Or append to assets/base.css.
+ */
+
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --allfeams-sand-bg: #FAF6F4;
+  --allfeams-noir: #1D1514;
+  --allfeams-gold: #C5A059;
+  --allfeams-rose: #C07C6E;
+  --allfeams-rose-light: #F9ECE8;
+  --allfeams-font-serif: 'Cormorant Garamond', Georgia, serif;
+  --allfeams-font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+
+/* 2. Global Typography & Background Override */
+body, .gradient {
+  background-color: var(--allfeams-sand-bg) !important;
+  color: var(--allfeams-noir) !important;
+  font-family: var(--allfeams-font-sans) !important;
+}
+
+h1, h2, h3, .h1, .h2, .h3, .banner__heading, .product__title {
+  font-family: var(--allfeams-font-serif) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* 3. Luxury Rose-Gold Buttons */
+.button, .shopify-payment-button__button--unbranded {
+  background: linear-gradient(135deg, #C07C6E 0%, #D48B7B 50%, #C5A059 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  font-family: var(--allfeams-font-sans) !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.16em !important;
+  transition: all 0.35s ease !important;
+  box-shadow: 0 8px 20px -4px rgba(192, 124, 110, 0.35) !important;
+}
+
+.button:hover, .shopify-payment-button__button--unbranded:hover {
+  background: linear-gradient(135deg, #AA6557 0%, #C07C6E 50%, #B89248 100%) !important;
+  box-shadow: 0 12px 25px -4px rgba(192, 124, 110, 0.45) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 4. Luxury Badges */
+.badge {
+  background-color: var(--allfeams-rose-light) !important;
+  color: var(--allfeams-rose) !important;
+  border: 1px solid rgba(192, 124, 110, 0.3) !important;
+  border-radius: 9999px !important;
+  font-size: 10px !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}

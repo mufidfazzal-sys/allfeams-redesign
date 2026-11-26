@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Signature Collection | ALLFEAMS™ Feminine Wellness</title>
+  <meta name="description" content="Explore ALLFEAMS™ clinically formulated, 100% hormone-free supplements for vaginal flora, cycle regulation, and bloating relief.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS Framework -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            sand: {
+              50: '#FDFCFB',
+              100: '#FAF6F4',
+              200: '#F5ECE7',
+              300: '#EBDDD6',
+              400: '#D8C4BC',
+              500: '#B8A096',
+            },
+            gold: {
+              400: '#D4AF37',
+              500: '#C5A059',
+              600: '#AD8941',
+              700: '#8A6A2C',
+            },
+            noir: {
+              950: '#120D0C',
+              900: '#1D1514',
+              800: '#2C201E',
+              700: '#3E2F2C',
+            },
+            rosefemme: {
+              50: '#FDF9F8',
+              100: '#F9ECE8',
+              200: '#F2D7D0',
+              300: '#E4BFB5',
+              400: '#D29E91',
+              500: '#C07C6E',
+              600: '#AA6557',
+              700: '#8F4E41',
+              800: '#753A2F',
+              900: '#52241C',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/luxury-styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    window.safeCreateIcons = function() {
+      try {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      } catch (e) {}
+    };
+  </script>
+</head>
+<body class="bg-sand-100 text-noir-900 font-sans antialiased selection:bg-rosefemme-400 selection:text-white">
+
+  <!-- ================= TOP LUXURY TICKER ================= -->
+  <aside aria-label="Announcement" class="bg-gradient-to-r from-[#201615] via-[#2A1C1A] to-[#201615] text-rosefemme-100 text-xs py-2.5 px-4 tracking-luxury uppercase border-b border-rosefemme-900/60 overflow-hidden">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="hidden lg:flex items-center space-x-2 text-rosefemme-300">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rosefemme-400"></i>
+        <span class="text-[11px] font-medium tracking-widest text-rosefemme-200">Doctor Formulated &bull; 100% Hormone-Free</span>
+      </div>
+      <div class="flex-1 text-center font-normal text-[11px] tracking-wider text-sand-100 flex items-center justify-center space-x-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-rosefemme-400 animate-pulse flex-shrink-0"></span>
+        <span>🌸 100% Discreet Packaging &bull; Free Shipping Over $50 &bull; 60-Day Empty-Bottle Promise</span>
+      </div>
+      <div class="flex items-center space-x-3 text-[11px]">
+        <div class="relative inline-block text-left">
+          <label for="currency-select" class="sr-only">Select Currency</label>
+          <select id="currency-select" class="bg-[#181110] text-rosefemme-300 font-semibold px-2.5 py-1 rounded-md border border-rosefemme-900 focus:outline-none cursor-pointer uppercase transition text-xs">
+            <option value="USD">USD ($)</option>
+            <option value="IDR">IDR (Rp)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+      <!-- ================= STICKY HEADER (STILL & EXTRA SPACIOUS LUXURY LAYOUT) ================= -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-rosefemme-200/60 transition-all duration-300" id="main-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Left: Brand Logo (Extra Spacious Breathing Room from Home Menu) -->
+        <div class="flex items-center flex-shrink-0 mr-6 sm:mr-8 lg:mr-14 xl:mr-20">
+          <button id="mobile-menu-btn" aria-label="Open Navigation Menu" class="p-2 -ml-2 text-noir-900 hover:text-rosefemme-700 transition lg:hidden mr-2">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+          
+          <a href="index.html" class="flex items-center py-2 pr-4 sm:pr-6 group focus:outline-none" title="ALLFEAMS™ Home">
+            <img src="assets/logo.png" alt="ALLFEAMS™" class="h-8 sm:h-10 md:h-11 w-auto object-contain transition-transform group-hover:scale-105">
+          </a>
+        </div>
+
+        <!-- Center: Desktop Navigation (Refined, balanced, elegant spacing) -->
+                <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-xs uppercase tracking-luxury font-medium text-noir-800">
+          <a href="index.html" class="text-noir-800 hover:text-rosefemme-700 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosefemme-600 hover:after:w-full after:transition-all">Home</a>
+          <a href="collection.html" class="nav-active-pill text-rosefemme-700 font-semibold py-1 relative">Collection</a>
+          <a href="formula-matcher.html" class="text-noir-800 hover:text-rosefemme-700 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosefemme-600 hover:after:w-full after:transition-all flex items-center gap-1.5"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-rosefemme-500"></i> Formula Matcher</a>
+          <a href="stories.html" class="text-noir-800 hover:text-rosefemme-700 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosefemme-600 hover:after:w-full after:transition-all flex items-center gap-1"><i data-lucide="play" class="w-3 h-3 text-rosefemme-600"></i> Watch Stories</a>
+          <a href="science.html" class="text-noir-800 hover:text-rosefemme-700 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosefemme-600 hover:after:w-full after:transition-all">The Science</a>
+          <a href="reviews.html" class="text-noir-800 hover:text-rosefemme-700 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosefemme-600 hover:after:w-full after:transition-all flex items-center gap-1"><span>Stories</span> <span class="text-rosefemme-600 font-semibold">(4.9★)</span></a>
+          <a href="faq.html" class="text-noir-800 hover:text-rosefemme-700 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosefemme-600 hover:after:w-full after:transition-all">FAQ</a>
+        </nav>
+
+        <!-- Right: Utility Actions (Search & Shopping Bag) -->
+        <div class="flex items-center space-x-3 sm:space-x-4 flex-shrink-0">
+          <button id="search-desktop-btn" class="hidden sm:flex items-center text-xs uppercase tracking-luxury text-noir-700 hover:text-rosefemme-700 transition px-2 py-1.5 rounded-lg hover:bg-rosefemme-50">
+            <i data-lucide="search" class="w-4 h-4 mr-1.5 text-noir-600"></i>
+            <span>Search</span>
+          </button>
+
+          <button id="search-mobile-btn" aria-label="Search" class="p-2 text-noir-900 hover:text-rosefemme-700 transition sm:hidden">
+            <i data-lucide="search" class="w-5 h-5"></i>
+          </button>
+
+          <!-- Shopping Bag Trigger Button -->
+          <button id="open-cart-btn" class="relative flex items-center bg-gradient-to-r from-noir-900 to-[#2E1F1D] text-sand-100 hover:from-rosefemme-700 hover:to-gold-600 px-4 py-2 rounded-full transition-all duration-300 shadow-sm" aria-label="Open Shopping Bag">
+            <i data-lucide="shopping-bag" class="w-4 h-4 text-rosefemme-200"></i>
+            <span class="ml-2 text-xs font-medium tracking-wider hidden sm:inline">Bag</span>
+            <span id="cart-counter" class="ml-1.5 bg-rosefemme-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">1</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MOBILE NAVIGATION DRAWER ================= -->
+  <div id="mobile-nav" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-300">
+    <div class="fixed inset-y-0 left-0 max-w-xs w-full bg-sand-100 shadow-2xl flex flex-col justify-between p-6 overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-rosefemme-200">
+          <div>
+            <img src="assets/logo.png" alt="ALLFEAMS™" class="h-8 w-auto object-contain">
+            <p class="text-[9px] uppercase tracking-widest text-rosefemme-700 mt-1 font-medium">The Inside-Out Balance</p>
+          </div>
+          <button id="close-mobile-nav" aria-label="Close Navigation" class="p-2 text-noir-700 hover:text-noir-900">
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+                <nav class="mt-8 space-y-4 text-sm uppercase tracking-luxury font-medium">
+          <a href="index.html" class="block text-noir-800 hover:text-rosefemme-700 transition py-2 border-b border-sand-200">Home</a>
+          <a href="collection.html" class="block text-rosefemme-800 font-semibold py-2 border-b border-sand-200 bg-rosefemme-100/70 pl-3 rounded-r-xl border-l-4 border-l-rosefemme-600">The Collection</a>
+          <a href="formula-matcher.html" class="flex items-center justify-between text-rosefemme-800 bg-rosefemme-100/70 p-3 rounded-xl mobile-nav-link border border-rosefemme-200 font-medium">
+            <span class="flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-4 h-4 text-rosefemme-600"></i>
+              Find Your Formula
+            </span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
+          <a href="stories.html" class="block text-noir-800 hover:text-rosefemme-700 transition py-2 border-b border-sand-200">Watch Stories (Videos)</a>
+          <a href="science.html" class="block text-noir-800 hover:text-rosefemme-700 transition py-2 border-b border-sand-200">Clinical Science &amp; Labs</a>
+          <a href="reviews.html" class="block text-noir-800 hover:text-rosefemme-700 transition py-2 border-b border-sand-200">Verified Stories (4.9★)</a>
+          <a href="faq.html" class="block text-noir-800 hover:text-rosefemme-700 transition py-2 border-b border-sand-200">FAQ &amp; Discreet Shipping</a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-rosefemme-200 text-xs text-noir-600 space-y-2">
+        <div class="flex items-center space-x-2 text-rosefemme-800 font-medium">
+          <i data-lucide="package-check" class="w-4 h-4 text-rosefemme-600"></i>
+          <span>100% Plain Unmarked Box Shipping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SEARCH MODAL ================= -->
+  <div id="search-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-start justify-center pt-20 px-4 transition-opacity duration-300">
+    <div class="bg-white max-w-xl w-full rounded-3xl shadow-2xl p-6 sm:p-8 border border-rosefemme-200 relative">
+      <div class="flex items-center justify-between pb-4 border-b border-sand-200">
+        <div class="flex items-center space-x-2 text-noir-900">
+          <i data-lucide="sparkles" class="w-5 h-5 text-rosefemme-500"></i>
+          <h3 class="font-serif text-xl font-bold">Search ALLFEAMS™ Formulas</h3>
+        </div>
+        <button id="close-search-btn" class="p-1.5 text-noir-500 hover:text-noir-900 rounded-full hover:bg-sand-100">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="mt-4">
+        <input type="text" id="search-input" placeholder="Search by concern (e.g. odor, flora, cramps, bloat)..." class="w-full bg-sand-50 border border-sand-300 rounded-2xl px-5 py-3.5 text-sm text-noir-900 placeholder-noir-400 focus:outline-none focus:border-rosefemme-400 transition">
+      </div>
+      <div id="search-results" class="mt-6 space-y-3 max-h-72 overflow-y-auto"></div>
+    </div>
+  </div>
+
+  <!-- ================= COLLECTION HERO HEADER ================= -->
+  <section class="relative pt-12 pb-16 bg-gradient-to-b from-[#FAF5F2] via-[#F8EDE9] to-sand-100 border-b border-rosefemme-200/60 overflow-hidden">
+    <div class="absolute -top-10 right-10 w-80 h-80 bg-rosefemme-200/40 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center space-x-2 bg-white/90 border border-rosefemme-200 px-4 py-1.5 rounded-full shadow-xs mb-4">
+        <span class="text-xs">🌸</span>
+        <span class="text-xs font-semibold uppercase tracking-widest text-rosefemme-800">Doctor Formulated &bull; Pure Botanical Alchemy</span>
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-noir-900 tracking-tight">
+        The Signature Collection
+      </h1>
+      <p class="text-base sm:text-lg text-noir-700 max-w-2xl mx-auto font-light mt-3 leading-relaxed">
+        Pure, bioavailable, and 100% hormone-free formulas engineered in California to balance your microbiome, stabilize your cycle, and restore effortless daily comfort.
+      </p>
+
+      <!-- Category Filter Pills -->
+      <div class="mt-8 flex flex-wrap justify-center gap-2 text-xs">
+        <a href="#flora" class="px-5 py-2.5 rounded-full bg-rosefemme-700 text-white font-medium shadow-sm transition hover:bg-rosefemme-800">
+          🌸 Flora+ (Vaginal &amp; pH)
+        </a>
+        <a href="#harmony" class="px-5 py-2.5 rounded-full bg-white text-noir-800 border border-rosefemme-200 font-medium transition hover:border-rosefemme-400 hover:bg-rosefemme-50">
+          💖 Harmony+ (Ovarian &amp; Cycle)
+        </a>
+        <a href="#flatfeams" class="px-5 py-2.5 rounded-full bg-white text-noir-800 border border-rosefemme-200 font-medium transition hover:border-rosefemme-400 hover:bg-rosefemme-50">
+          🌿 FlatFeams (Debloat &amp; Gut)
+        </a>
+        <a href="#bundles" class="px-5 py-2.5 rounded-full bg-white text-noir-800 border border-rosefemme-200 font-medium transition hover:border-rosefemme-400 hover:bg-rosefemme-50">
+          ✨ Curated 3 &amp; 6-Bottle Bundles
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DETAILED PRODUCTS CATALOG ================= -->
+  <main class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+
+    <!-- PRODUCT 1: FLORA+ ADVANCED VAGINAL SUPPORT -->
+    <section id="flora" class="scroll-mt-28 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-white rounded-3xl p-8 sm:p-12 border border-rosefemme-200/80 shadow-xl feminine-glow">
+      <div class="lg:col-span-6 relative">
+        <div class="relative bg-gradient-to-b from-rosefemme-50/60 to-sand-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden min-h-[380px]">
+          <span class="absolute top-4 left-4 bg-rosefemme-800 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-xs">
+            🌸 #1 Best Seller
+          </span>
+          <img id="flora-main-img" src="assets/Advanced.jpg" alt="Advanced Flora+ Vaginal Support Gummies" class="w-full max-w-[340px] h-auto object-cover rounded-2xl filter drop-shadow-2xl hover:scale-105 transition-transform duration-500">
+        </div>
+        <!-- Thumbnail Gallery Strip -->
+        <div class="mt-4 grid grid-cols-4 gap-3">
+          <img src="assets/Advanced/Advanced 1.jpg" alt="Flora+ angle 1" class="w-full h-20 object-cover rounded-xl border border-rosefemme-200 hover:border-rosefemme-500 transition cursor-pointer" onclick="switchProductAngle(this, 'flora-main-img')">
+          <img src="assets/Advanced/Advanced 2.jpg" alt="Flora+ angle 2" class="w-full h-20 object-cover rounded-xl border border-rosefemme-200 hover:border-rosefemme-500 transition cursor-pointer" onclick="switchProductAngle(this, 'flora-main-img')">
+          <img src="assets/Advanced/Advanced 3.jpg" alt="Flora+ angle 3" class="w-full h-20 object-cover rounded-xl border border-rosefemme-200 hover:border-rosefemme-500 transition cursor-pointer" onclick="switchProductAngle(this, 'flora-main-img')">
+          <img src="assets/Advanced/Advanced 4.jpg" alt="Flora+ angle 4" class="w-full h-20 object-cover rounded-xl border border-rosefemme-200 hover:border-rosefemme-500 transition cursor-pointer" onclick="switchProductAngle(this, 'flora-main-img')">
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 space-y-5 text-left">
+        <div class="flex items-center space-x-2 text-gold-500 text-xs font-semibold">
+          <span>★★★★★</span>
+          <span class="text-rosefemme-800 font-bold">4.9 / 5.0</span>
+          <span class="text-sand-400">&bull;</span>
+          <span class="text-noir-600">2,410 Verified Women Reviews</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-noir-900">Advanced Flora+ Vaginal Support</h2>
+        <p class="text-xs uppercase tracking-widest text-rosefemme-700 font-semibold">Targeted Probiotic &amp; Cranberry Gummies for Complete Odor &amp; pH Equilibrium</p>
+        <p class="text-sm text-noir-700 font-light leading-relaxed">
+          Triple-action probiotic chewables infused with pure cranberry PACs and prebiotic inulin. Colonizes beneficial <em>Lactobacillus reuteri</em> in the mucosal membrane to eliminate odor at the source within 7–14 days.
+        </p>
+
+        <!-- Key Benefits List -->
+        <div class="space-y-2 py-3 border-y border-rosefemme-200/60">
+          <div class="flex items-center gap-2 text-xs text-noir-800">
+            <i data-lucide="check-circle" class="w-4 h-4 text-rosefemme-600"></i>
+            <span>Maintains protective acidic intimate pH (3.8 – 4.5)</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-noir-800">
+            <i data-lucide="check-circle" class="w-4 h-4 text-rosefemme-600"></i>
+            <span>5 Billion CFU targeted female probiotic strains per dose</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-noir-800">
+            <i data-lucide="check-circle" class="w-4 h-4 text-rosefemme-600"></i>
+            <span>Eliminates recurring odor after exercise, intimacy, and periods</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-noir-800">
+            <i data-lucide="check-circle" class="w-4 h-4 text-rosefemme-600"></i>
+            <span>Delicious natural berry flavor &bull; 100% Sugar-Free &bull; Vegan</span>
+          </div>
+        </div>
+
+        <!-- Pricing & Add to Cart -->
+        <div class="pt-2 flex flex-col sm:flex-row items-center gap-5">
+          <div>
+            <span class="text-3xl font-bold text-noir-900 price-display" data-usd="34.95">$34.95</span>
+            <span class="text-xs text-rosefemme-700 line-through ml-2 original-price-display" data-usd="49.95">$49.95</span>
+            <span class="block text-[11px] text-emerald-700 font-medium">In Stock &bull; Ships in Plain Brown Box</span>
+          </div>
+          <button onclick="quickAddProduct('flora', 'Advanced Flora+ Vaginal Support', 34.95, 'assets/Advanced.jpg')" class="btn-rosegold w-full sm:w-auto px-8 py-4 rounded-full text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 shadow-lg">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+            <span>Add Flora+ to Bag</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT 2: HARMONY+ OVARIAN & CYCLE SUPPORT -->
+    <section id="harmony" class="scroll-mt-28 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-white rounded-3xl p-8 sm:p-12 border border-rosefemme-200/80 shadow-xl feminine-glow">
+      <div class="lg:col-span-6 relative lg:order-2">
+        <div class="relative bg-gradient-to-b from-rosefemme-50/60 to-sand-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden min-h-[380px]">
+          <span class="absolute top-4 left-4 bg-[#332220] text-sand-50 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-xs">
+            💖 Clinical Harmony
+          </span>
+          <img id="harmony-main-img" src="assets/Harmony+.jpg" alt="Harmony+ Ovarian Support Capsules" class="w-full max-w-[340px] h-auto object-cover rounded-2xl filter drop-shadow-2xl hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-4 grid grid-cols-3 gap-3">
+          <img src="assets/harmony+/Harmony 1.jpg" alt="Harmony+ angle 1" class="w-full h-20 object-cover rounded-xl border border-rosefemme-200 hover:border-rosefemme-500 transition cursor-pointer" onclick="switchProductAngle(this, 'harmony-main-img')">
+          <img src="assets/harmony+/Harmony 2.jpg" alt="Harmony+ angle 2" class="w-full h-20 object-cover rounded-xl border border-rosefemme-200 hover:border-rosefemme-500 transition cursor-pointer" onclick="switchProductAngle(this, 'harmony-main-img')">
+          <img src="assets/harmony+/Harmony 3.jpg" alt="Harmony+ angle 3" class="w-full h-20 object-cover rounded-xl border border-rosefemme-200 hover:border-rosefemme-500 transition cursor-pointer" onclick="switchProductAngle(this, 'harmony-main-img')">
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 space-y-5 text-left lg:order-1">
+        <div class="flex items-center space-x-2 text-gold-500 text-xs font-semibold">
+          <span>★★★★★</span>
+          <span class="text-rosefemme-800 font-bold">4.9 / 5.0</span>
+          <span class="text-sand-400">&bull;</span>
+          <span class="text-noir-600">1,840 Verified Women Reviews</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-noir-900">Harmony+ Ovarian Support Capsules</h2>
+        <p class="text-xs uppercase tracking-widest text-rosefemme-700 font-semibold">40:1 Myo &amp; D-Chiro Inositol Complex for Hormonal &amp; Menstrual Equilibrium</p>
+        <p class="text-sm text-noir-700 font-light leading-relaxed">
+          Engineered with the body’s physiological 40:1 Myo &amp; D-Chiro Inositol ratio enriched with bioactive methylfolate B9 and CoQ10. Naturally balances ovarian rhythm, eases painful menstrual cramps, and steadies hormonal mood swings.
+        </p>
+
+        <div class="space-y-2 py-3 border-y border-rosefemme-200/60">
+          <div class="flex items-center gap-2 text-xs text-noir-800">
+            <i data-lucide="check-circle" class="w-4 h-4 text-rosefemme-600"></i>
+            <span>Establishes predictable 28–30 day menstrual cycle rhythm</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-noir-800">
+            <i data-lucide="check-circle" class="w-4 h-4 text-rosefemme-600"></i>
+            <span>Soothes intense ovarian cramps and heavy period discomfort</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-noir-800">
+            <i data-lucide="check-circle" class="w-4 h-4 text-rosefemme-600"></i>
+            <span>Curbs hormonal breakouts, excess oil, and mood fluctuations</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-noir-800">
+            <i data-lucide="check-circle" class="w-4 h-4 text-rosefemme-600"></i>
+            <span>100% Hormone-Free &bull; Vegan Cellulose Capsules</span>
+          </div>
+        </div>
+
+        <div class="pt-2 flex flex-col sm:flex-row items-center gap-5">
+          <div>
+            <span class="text-3xl font-bold text-noir-900 price-display" data-usd="34.95">$34.95</span>
+            <span class="text-xs text-rosefemme-700 line-through ml-2 original-price-display" data-usd="49.95">$49.95</span>
+            <span class="block text-[11px] text-emerald-700 font-medium">In Stock &bull; Ships in Plain Brown Box</span>
+          </div>
+          <button onclick="quickAddProduct('harmony', 'Harmony+ Ovarian Support Capsules', 34.95, 'assets/Harmony+.jpg')" class="btn-rosegold w-full sm:w-auto px-8 py-4 rounded-full text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 shadow-lg">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+            <span>Add Harmony+ to Bag</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT 3: FLATFEAMS CRAVING & BLOAT -->
+    <section id="flatfemme" class="scroll-mt-28 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-white rounded-3xl p-8 sm:p-12 border border-rosefemme-200/80 shadow-xl feminine-glow">
+      <div class="lg:col-span-6 relative">
+        <div class="relative bg-gradient-to-b from-rosefemme-50/60 to-sand-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden min-h-[380px]">
+          <span class="absolute top-4 left-4 bg-[#332220] text-sand-50 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-xs">
+            🌿 Flat Belly Comfort
+          </span>
+          <img id="flatfeams-main-img" src="assets/Flatfeams.jpg" alt="FlatFeams Daily Craving & Bloat Support" class="w-full max-w-[340px] h-auto object-cover rounded-2xl filter drop-shadow-2xl hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-4 grid grid-cols-3 gap-3">
+          <img src="assets/Flatfeams/Flatfeams 1.jpg" alt="Flatfeams angle 1" class="w-full h-20 object-cover rounded-xl border border-rosefemme-200 hover:border-rosefemme-500 transition cursor-pointer" onclick="switchProductAngle(this, 'flatfeams-main-img')">
+          <img src="assets/Flatfeams/Flatfeams 2.jpg" alt="Flatfeams angle 2" class="w-full h-20 object-cover rounded-xl border border-rosefemme-200 hover:border-rosefemme-500 transition cursor-pointer" onclick="switchProductAngle(this, 'flatfeams-main-img')">
+          <img src="assets/Flatfeams/Flatfeams 3.jpg" alt="Flatfeams angle 3" class="w-full h-20 object-cover rounded-xl border border-rosefemme-200 hover:border-rosefemme-500 transition cursor-pointer" onclick="switchProductAngle(this, 'flatfeams-main-img')">
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 space-y-5 text-left">
+        <div class="flex items-center space-x-2 text-gold-500 text-xs font-semibold">
+          <span>★★★★★</span>
+          <span class="text-rosefemme-800 font-bold">4.8 / 5.0</span>
+          <span class="text-sand-400">&bull;</span>
+          <span class="text-noir-600">1,390 Verified Women Reviews</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-noir-900">FlatFeams Daily Debloat &amp; Craving Harmony</h2>
+        <p class="text-xs uppercase tracking-widest text-rosefemme-700 font-semibold">Targeted Digestive Multi-Enzymes with Dandelion &amp; Chromium</p>
+        <p class="text-sm text-noir-700 font-light leading-relaxed">
+          Breaks down food retention, flushes excess cellular water puffiness, and soothes painful post-meal "food babies" in under 60 minutes. Keeps evening cravings at bay.
+        </p>
+
+        <div class="space-y-2 py-3 border-y border-rosefemme-200/60">
+          <div class="flex items-center gap-2 text-xs text-noir-800">
+            <i data-lucide="check-circle" class="w-4 h-4 text-rosefemme-600"></i>
+            <span>DigeZyme® multi-enzyme matrix breaks down carbs, fats, &amp; dairy</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-noir-800">
+            <i data-lucide="check-circle" class="w-4 h-4 text-rosefemme-600"></i>
+            <span>Organic dandelion root &amp; ginger flush water bloating</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-noir-800">
+            <i data-lucide="check-circle" class="w-4 h-4 text-rosefemme-600"></i>
+            <span>Chromium picolinate prevents evening sugar dips and snack cravings</span>
+          </div>
+        </div>
+
+        <div class="pt-2 flex flex-col sm:flex-row items-center gap-5">
+          <div>
+            <span class="text-3xl font-bold text-noir-900 price-display" data-usd="34.95">$34.95</span>
+            <span class="text-xs text-rosefemme-700 line-through ml-2 original-price-display" data-usd="49.95">$49.95</span>
+            <span class="block text-[11px] text-emerald-700 font-medium">In Stock &bull; Ships in Plain Brown Box</span>
+          </div>
+          <button onclick="quickAddProduct('flatfemme', 'FlatFeams Craving & Bloat Support', 34.95, 'assets/Flatfeams.jpg')" class="btn-rosegold w-full sm:w-auto px-8 py-4 rounded-full text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 shadow-lg">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+            <span>Add FlatFeams to Bag</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CURATED BUNDLES (FEATURING ALL-VARIANTS.JPG) -->
+    <section id="bundles" class="scroll-mt-28 bg-gradient-to-b from-[#1C1514] via-[#261C1B] to-[#1C1514] text-sand-100 rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        <div class="lg:col-span-5 text-center">
+          <img src="assets/all-variants.jpg" alt="ALLFEAMS Complete Ritual Collection" class="w-full max-w-sm mx-auto object-cover rounded-2xl filter drop-shadow-2xl">
+          <span class="inline-block mt-4 text-xs font-mono text-rosefemme-300">Complete Synergistic Ritual</span>
+        </div>
+
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rosefemme-900/80 border border-rosefemme-700 text-rosefemme-200 text-xs font-semibold">
+            <span>✨ Maximum Value Transformation</span>
+          </div>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Save Up to 48% with Curated 3 &amp; 6-Bottle Bundles</h2>
+          <p class="text-sm text-sand-300 font-light leading-relaxed">
+            Sustained mucosal and cycle equilibrium requires consistent daily support. Select your preferred formula bundle to enjoy locked-in pricing and complimentary discreet VIP shipping.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <!-- 3 Bottles Card -->
+            <div class="bg-[#241A19] p-5 rounded-2xl border border-rosefemme-400 relative">
+              <span class="absolute -top-3 left-4 bg-gradient-to-r from-rosefemme-500 to-gold-500 text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
+                Most Popular
+              </span>
+              <h4 class="font-serif text-xl font-bold text-white">3-Bottle 90-Day Reset</h4>
+              <p class="text-xs text-rosefemme-300 mt-1">Save 38% &bull; $24.95 / bottle</p>
+              <div class="mt-3 text-lg font-bold text-white price-display" data-usd="74.85">$74.85</div>
+              <button onclick="addBundleToCart(3)" class="btn-rosegold mt-4 w-full py-2.5 rounded-xl text-xs uppercase tracking-wider font-bold">
+                Select 3-Bottle Bundle
+              </button>
+            </div>
+
+            <!-- 6 Bottles Card -->
+            <div class="bg-[#241A19] p-5 rounded-2xl border border-rosefemme-900/60">
+              <h4 class="font-serif text-xl font-bold text-white">6-Bottle 180-Day Supply</h4>
+              <p class="text-xs text-rosefemme-300 mt-1">Save 48% &bull; $21.95 / bottle</p>
+              <div class="mt-3 text-lg font-bold text-white price-display" data-usd="131.70">$131.70</div>
+              <button onclick="addBundleToCart(6)" class="mt-4 w-full py-2.5 bg-[#382825] hover:bg-rosefemme-600 text-sand-100 rounded-xl text-xs uppercase tracking-wider font-bold transition">
+                Select 6-Bottle Bundle
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+    <!-- ================= LUXURY FOOTER (100% RESPONSIVE & MOBILE-OPTIMIZED) ================= -->
+  <footer class="bg-gradient-to-b from-[#1C1514] to-[#120D0C] text-sand-300 pt-16 pb-36 sm:pb-28 lg:pb-16 border-t border-rosefemme-900/40 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Newsletter Row -->
+      <div class="pb-12 border-b border-rosefemme-900/60 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-6 text-left">
+          <span class="text-rosefemme-400 text-xs uppercase tracking-widest font-semibold block mb-1">Join Our Inside-Out Sisterhood</span>
+          <h3 class="font-serif text-2xl sm:text-3xl text-white">Unlock 10% Off Your First Ritual</h3>
+          <p class="text-xs text-rosefemme-300/90 mt-1 font-light leading-relaxed">
+            Receive our doctor-reviewed clinical feminine wellness guide, private subscriber offers, and priority restock notifications.
+          </p>
+        </div>
+        <div class="lg:col-span-6">
+          <form class="flex flex-col sm:flex-row gap-2.5 w-full" id="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+            <input type="email" id="newsletter-email" placeholder="Enter your email address..." required class="w-full sm:flex-1 bg-[#281D1B] border border-rosefemme-900 rounded-full px-5 py-3 text-xs text-white placeholder-rosefemme-400 focus:outline-none focus:border-rosefemme-500 transition">
+            <button type="submit" class="btn-rosegold w-full sm:w-auto px-7 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition flex-shrink-0 text-center">
+              Subscribe
+            </button>
+          </form>
+          <div id="newsletter-success" class="hidden mt-3 p-3 bg-emerald-950/80 border border-emerald-500/50 rounded-xl text-emerald-300 text-xs">
+            ✨ Welcome to ALLFEAMS™ Sisterhood! Use code <strong class="text-white underline">HARMONY10</strong> at checkout for 10% off.
+          </div>
+        </div>
+      </div>
+
+      <!-- Links Grid (Fully responsive on mobile) -->
+      <div class="py-12 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-xs font-light text-left">
+        <div>
+          <h4 class="font-semibold text-rosefemme-300 uppercase tracking-wider text-[11px] mb-4">Collection</h4>
+          <ul class="space-y-2.5">
+            <li><a href="collection.html#flora" class="hover:text-rosefemme-200 transition">Flora+ Vaginal Support</a></li>
+            <li><a href="collection.html#harmony" class="hover:text-rosefemme-200 transition">Harmony+ Ovarian Support</a></li>
+            <li><a href="collection.html#flatfeams" class="hover:text-rosefemme-200 transition">FlatFeams Bloat Relief</a></li>
+            <li><a href="collection.html#bundles" class="hover:text-rosefemme-200 transition">Curated 3-Pack Rituals</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-rosefemme-300 uppercase tracking-wider text-[11px] mb-4">Explore</h4>
+          <ul class="space-y-2.5">
+            <li><a href="formula-matcher.html" class="hover:text-rosefemme-200 transition">Find Your Formula</a></li>
+            <li><a href="stories.html" class="hover:text-rosefemme-200 transition">Watch Video Stories</a></li>
+            <li><a href="science.html" class="hover:text-rosefemme-200 transition">Clinical Science &amp; Labs</a></li>
+            <li><a href="reviews.html" class="hover:text-rosefemme-200 transition">Verified Reviews (4.9★)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-rosefemme-300 uppercase tracking-wider text-[11px] mb-4">Customer Care</h4>
+          <ul class="space-y-2.5">
+            <li><a href="faq.html#privacy" class="hover:text-rosefemme-200 transition">Discreet Plain Packaging</a></li>
+            <li><a href="faq.html#guarantee" class="hover:text-rosefemme-200 transition">60-Day Empty Bottle Promise</a></li>
+            <li><a href="https://allfeams.com/apps/track-your-order" target="_blank" rel="noopener" class="hover:text-rosefemme-200 transition">Track Your Order</a></li>
+            <li><a href="faq.html" class="hover:text-rosefemme-200 transition">FAQ &amp; Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-rosefemme-300 uppercase tracking-wider text-[11px] mb-4">About ALLFEAMS</h4>
+          <p class="text-sand-400 text-xs leading-relaxed font-light mb-4">
+            ALLFEAMS™ is dedicated to elevating female holistic wellness through clean science, cellular bioavailability, and 100% discrete shipping.
+          </p>
+          <div class="flex items-center space-x-2 text-rosefemme-300 text-xs">
+            <i data-lucide="shield-check" class="w-4 h-4 text-rosefemme-400"></i>
+            <span>Doctor Formulated &bull; cGMP Certified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Subnav Links (Wrapped safely for mobile, zero cut-off) -->
+      <div class="pt-6 pb-8 border-t border-rosefemme-900/60">
+        <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2.5 text-xs text-rosefemme-300/80">
+          <a href="index.html" class="hover:text-white transition">Home</a>
+          <span>&bull;</span>
+          <a href="collection.html" class="hover:text-white transition">Collection</a>
+          <span>&bull;</span>
+          <a href="formula-matcher.html" class="hover:text-white transition">Formula Matcher</a>
+          <span>&bull;</span>
+          <a href="stories.html" class="hover:text-white transition">Watch Stories</a>
+          <span>&bull;</span>
+          <a href="science.html" class="hover:text-white transition">Clinical Science</a>
+          <span>&bull;</span>
+          <a href="reviews.html" class="hover:text-white transition">Reviews (4.9★)</a>
+          <span>&bull;</span>
+          <a href="faq.html" class="hover:text-white transition">FAQ &amp; Discreet Shipping</a>
+        </div>
+      </div>
+
+      <!-- Legal Disclaimer & Copyright -->
+      <div class="border-t border-rosefemme-900/60 pt-6 space-y-3 text-[10px] text-rosefemme-400/80 font-light leading-relaxed text-center sm:text-left">
+        <p>
+          *These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any disease. Results may vary depending on individual physiological biochemistry. Consult your physician before starting any dietary supplement regimen.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-between text-sand-400/70 pt-2 text-[10px]">
+          <span>&copy; 2026 ALLFEAMS Inc. All rights reserved.</span>
+          <span class="mt-1 sm:mt-0">100% Hormone-Free &bull; Vegan Friendly &bull; Cruelty-Free</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= SLIDE-OUT CART DRAWER ================= -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden transition-opacity duration-300">
+    <div id="cart-drawer" class="fixed inset-y-0 right-0 max-w-md w-full bg-sand-100 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-out z-50">
+      <div class="p-6 border-b border-rosefemme-200 bg-white">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <i data-lucide="shopping-bag" class="w-5 h-5 text-rosefemme-700"></i>
+            <h3 class="font-serif text-xl font-bold text-noir-900">Your Shopping Bag</h3>
+            <span id="drawer-item-count" class="text-xs bg-rosefemme-600 text-white font-bold px-2 py-0.5 rounded-full">1</span>
+          </div>
+          <button id="close-cart-btn" aria-label="Close Cart" class="p-1.5 text-noir-700 hover:text-noir-900 rounded-full hover:bg-rosefemme-50 transition">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div class="mt-4 bg-rosefemme-50/70 p-3 rounded-xl border border-rosefemme-200/80">
+          <div class="flex justify-between text-xs font-medium text-noir-800 mb-1">
+            <span id="shipping-progress-text">Add $15.05 for Free Discreet Shipping</span>
+            <span id="shipping-progress-percent" class="font-bold text-rosefemme-700">70%</span>
+          </div>
+          <div class="w-full bg-sand-300 h-2 rounded-full overflow-hidden">
+            <div id="shipping-progress-bar" class="bg-gradient-to-r from-rosefemme-500 to-gold-500 h-2 rounded-full transition-all duration-500" style="width: 70%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="p-6 flex-1 overflow-y-auto space-y-4" id="cart-items-container"></div>
+      <div class="p-6 border-t border-rosefemme-200 bg-white space-y-4">
+        <div class="flex gap-2">
+          <input type="text" id="promo-input" placeholder="Promo code (e.g. HARMONY10)" class="flex-1 bg-sand-50 border border-sand-300 rounded-xl px-3.5 py-2 text-xs uppercase focus:outline-none focus:border-rosefemme-500">
+          <button onclick="applyPromoCode()" class="px-4 py-2 bg-rosefemme-800 hover:bg-rosefemme-700 text-white rounded-xl text-xs font-semibold uppercase tracking-wider transition">Apply</button>
+        </div>
+        <div id="promo-message" class="text-[11px] hidden"></div>
+        <div class="flex items-center justify-center space-x-2 text-[11px] text-rosefemme-800 bg-rosefemme-50 py-2 rounded-lg border border-rosefemme-200">
+          <i data-lucide="package-check" class="w-4 h-4 text-rosefemme-600"></i>
+          <span>Ships 100% Plain &amp; Discreet &bull; 60-Day Guarantee</span>
+        </div>
+        <div class="space-y-1.5 text-xs text-noir-700">
+          <div class="flex justify-between"><span>Subtotal</span><span id="drawer-subtotal" class="font-semibold text-noir-900">$34.95</span></div>
+          <div id="drawer-discount-row" class="hidden flex justify-between text-emerald-700"><span>Discount (HARMONY10)</span><span id="drawer-discount">- $3.50</span></div>
+          <div class="flex justify-between text-noir-600"><span>Discreet Shipping</span><span id="drawer-shipping" class="text-green-700 font-medium">Calculated next</span></div>
+          <div class="flex justify-between text-sm font-bold text-noir-900 pt-2 border-t border-sand-200"><span>Estimated Total</span><span id="drawer-total" class="text-base font-bold text-noir-900">$34.95 USD</span></div>
+        </div>
+        <button onclick="handleCheckout()" class="btn-rosegold w-full py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-xl transition flex items-center justify-center gap-2">
+          <i data-lucide="lock" class="w-4 h-4"></i><span>Proceed To Secure Checkout</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FLOATING TOAST ================= -->
+  <div id="toast-notification" class="fixed top-24 right-5 z-50 bg-[#221614] text-sand-100 px-5 py-3.5 rounded-2xl shadow-2xl border border-rosefemme-400/50 transform translate-x-32 opacity-0 pointer-events-none transition-all duration-300 flex items-center space-x-3">
+    <div class="w-7 h-7 rounded-full bg-gradient-to-r from-rosefemme-500 to-gold-500 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">✓</div>
+    <div>
+      <p id="toast-title" class="text-xs font-bold text-white">Added to Bag</p>
+      <p id="toast-desc" class="text-[11px] text-rosefemme-200">Your selection has been updated.</p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/products-data.js"></script>
+  <script src="js/reviews-data.js"></script>
+  <script src="js/currency.js"></script>
+  <script src="js/ui-interactions.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/formula-matcher.js"></script>
+  <script src="js/bundle.js"></script>
+  <script src="js/search-modal.js"></script>
+  <script src="js/image-lightbox.js"></script>
+  <script src="js/page-transitions.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
